@@ -1,0 +1,15 @@
+{
+    "name": "piccnigeria/website",
+    "description": "The official website of the public interest in corruption cases initiative.",
+    "require": {
+        "ultractiv/lean": "dev-master",
+	"mandrill/mandrill": "1.0.53",
+	"monolog/monolog": "1.10.0"
+    },
+    "authors": [
+        {
+            "name": "Yemi Agbetunsin",
+            "email": "temi.yemi@gmail.com"
+        }
+    ]
+}
