@@ -2,7 +2,6 @@
 
 class Controller extends \Lean\Controller {
 
-  protected $model = array();
   protected $user = array();
 
   protected function init(){
