@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule ^api(/.*)$ api.php$1 [QSA,NC,L]
+RewriteRule ^(css|js|fonts|img)(/.*)$ public/$1$2 [NC,L]
+RewriteRule ^(about|contact|blog|cases)(/.*)?$ public/index.html#$1$2 [L]
