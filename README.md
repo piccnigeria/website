@@ -44,7 +44,7 @@ This installs all javascript libraries used on the clientside to `public/js/src/
 
 ### Server Implementation
 
-The server app is built on [Ultractiv/Lean](github.com/ultractiv/lean) RESTful API framework. The application files can be
+The server app is built on [Ultractiv/Lean](https://github.com/ultractiv/lean) RESTful API framework. The application files can be
 seen in the `app/` directory. The configuration file for database and others can be found in `app/config.yaml`
 
 ### Client Implementation
@@ -59,6 +59,6 @@ The client app is built with `Bootstrap` (for styling) and structured with `Back
 
 ### Credits
 
-+ [Yemi Agbetunsin](github.com/temiyemi)
-+ [Segun Abisagbo](github.com/segebee)
-+ [Joseph Agunbiade](github.com/josephagunbiade)
++ [Yemi Agbetunsin](https://github.com/temiyemi)
++ [Segun Abisagbo](https://github.com/segebee)
++ [Joseph Agunbiade](https://github.com/josephagunbiade)
