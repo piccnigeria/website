@@ -3,7 +3,7 @@ composer.phar
 vendor
 uploads
 app/config.yaml
-
+*.mwb*
 public/css/src/bootstrap
 public/js/src/libs
 
