@@ -2,10 +2,8 @@
 
 class User extends \Lean\Model\Base {
 
-  use \Lean\Model\Traits;
-
-  protected $protected_attrs = 'password_hash salt';
-  protected $virtual_attrs = 'password password_confirmation';
+  protected $protected_attrs = 'password_hash salt'; # not accessible outside object
+  protected $virtual_attrs = 'password password_confirmation'; # not saved to db
 
   protected $validations = array(
     'create' => array(
@@ -20,9 +18,7 @@ class User extends \Lean\Model\Base {
   );
 
   public static function findByEmail($email) {
-    $user = new self ();
-    if ($user->findOne( array ( 'email' => $email ) ))
-      return $user;
+    return self::find( array ( 'email' => $email ) );
   }
 
   protected function beforeCreate(array &$attrs) {
@@ -31,9 +27,6 @@ class User extends \Lean\Model\Base {
     $attrs ['salt'] = uniqid ( '', true );
     $attrs ['code'] = mt_rand ( 1000000000, 9999999999 );
     $attrs ['password_hash'] = $this->hash ( $attrs ['password'], $attrs['salt']);
-    # TODO: Handle this in the framework
-    unset($attrs['password']);
-    unset($attrs['password_confirmation']);
   }
 
   protected function afterCreate() {

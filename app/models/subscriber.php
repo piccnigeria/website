@@ -2,8 +2,6 @@
 
 class Subscriber extends \Lean\Model\Base {
 
-	use \Lean\Model\Traits;
-
 	protected $order = 'name asc';
 
 	protected $validations = array(

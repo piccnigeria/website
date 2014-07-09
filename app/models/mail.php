@@ -2,8 +2,6 @@
 
 class Mail extends \Lean\Model\Base {
 
-  use \Lean\Model\Traits;
-
   protected $no_backend = true;
   protected $no_cache = true;
 
