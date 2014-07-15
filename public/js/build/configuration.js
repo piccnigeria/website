@@ -34,7 +34,11 @@ require.config({
     '$.flot':'libs/flot/jquery.flot',
     '$.pulsate':'libs/pulsate/jquery.pulsate',
     '$.select2':'libs/select2/select2',
-    '$.owlcarousel':'libs/owl-carousel/owl-carousel/owl.carousel',
+    '$.owl':'libs/owl-carousel/owl-carousel/owl.carousel',
+
+    // Revolution slider
+    '$.rs':'libs/slider-revolution-slider/rs-plugin/js/jquery.themepunch.plugins.min',
+    '$.revolution':'libs/slider-revolution-slider/rs-plugin/js/jquery.themepunch.revolution',
     
     // Bootstrap/jQuery Plugins    
     '$.bootstrapWizard':'libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard',
@@ -55,8 +59,8 @@ require.config({
     },    
     underscore:{
       exports:'_'
-    },
-
+    },    
+    
     // Testing
     jasmine: {
       exports: 'jasmine'

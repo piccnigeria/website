@@ -4,13 +4,15 @@ define [
   'text!tmpl/slider.html'
   'text!tmpl/infographics.html'
   'text!tmpl/about.html'
-  'text!tmpl/case.html'
+  'text!tmpl/case-profile.html'
   'text!tmpl/case-maps.html'
   'text!tmpl/cases.html'
-  'text!tmpl/contact-us.html'
+  'text!tmpl/contact.html'
   'text!tmpl/faqs.html'
   'text!tmpl/terms.html'
   'text!tmpl/policy.html'
+  'text!tmpl/blog.html'
+  'text!tmpl/blog-post.html'
   ],
   (
     Handlebars,
@@ -24,7 +26,9 @@ define [
     contactTmpl,
     faqsTmpl,
     termsTmpl,
-    policyTmpl    
+    policyTmpl,
+    blogTmpl,
+    blogPostTmpl
   ) ->
 
     index: Handlebars.compile indexTmpl
@@ -38,3 +42,5 @@ define [
     faqs: Handlebars.compile faqsTmpl
     terms: Handlebars.compile termsTmpl
     policy: Handlebars.compile policyTmpl
+    blog: Handlebars.compile blogTmpl
+    blog_post: Handlebars.compile blogPostTmpl
