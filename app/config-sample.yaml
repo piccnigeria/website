@@ -33,17 +33,17 @@ development:
   memcached:
     host: localhost
   mailer:
-    api_key: MANDRILL_API_KEY # Enter a valid API KEY here
     # Comment out the next line if you wish to send emails in development env
     pretend: true
+    mandrill_apikey: %MANDRILL_APIKEY% # Enter a valid API KEY here    
 
 production:
   database:
-    name: DATABASE_NAME
-    host: DATABASE_HOST
-    user: DATABASE_USER
-    password: DATABASE_PASSWORD
+    name: %DATABASE_NAME%
+    host: %DATABASE_HOST%
+    user: %DATABASE_USER%
+    password: %DATABASE_PASSWORD%
   memcached:
-    host: MEMCACHED_HOST
+    host: %MEMCACHED_HOST%
   mailer:
-    api_key: MANDRILL_API_KEY # Enter a valid API KEY here
+    mandrill_apikey: %MANDRILL_APIKEY% # Enter a valid API KEY here

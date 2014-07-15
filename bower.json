@@ -1,0 +1,51 @@
+{
+  "name": "piccnigeria",
+  "description": "Clientside JS for the Public Interest in Corruption Cases project",
+  "version": "0.0.1",
+  "authors": [
+    {
+      "name": "Yemi Agbetunsin",
+      "email": "yemi.agbetunsin@gmail.com",
+      "homepage": "https://github.com/temiyemi"
+    },
+    {
+      "name": "Segun Abisagbo",
+      "email": "segebee@gmail.com",
+      "homepage": "https://github.com/segebee"
+    }
+  ],
+  "dependencies": {
+    "underscore": "~1.6.0",
+    "backbone": "~1.1.2",
+    "jquery": "~2.1.0",
+    "handlebars": "~1.3.0",
+    "text": "~2.0.12",
+    "requirejs": "~2.1.11",
+    "require-cs": "~0.4.4",
+    "respond": "~1.4.2",
+    "moment": "~2.7.0",
+    "bootstrap": "~3.1.1",
+    "fancybox": "~2.1.5",
+    "jquery.uniform": "~2.1.2",
+    "gmaps": "~0.4.13",
+    "owl-carousel": "~1.3.2",
+    "datatables": "~1.10.0",
+    "twitter-bootstrap-wizard": "~1.0.0",
+    "bootstrap-wysihtml5": "*",
+    "flot": "~0.8.3",
+    "dropzone": "~3.10.2",
+    "jquery-file-upload": "~9.5.8",
+    "jquery.pulsate": "*",
+    "jquery.easing": "~1.3.0",
+    "typeahead.js": "~0.10.4",
+    "bower-mixitup": "~2.0.4",
+    "select2": "~3.5.0",
+    "jquery-multiselect": "*"
+  },
+  "devDependencies": {
+    "jasmine": "~2.0.0"
+  },
+  "resolutions": {
+    "jquery": ">= 1.9.0"
+  }
+}

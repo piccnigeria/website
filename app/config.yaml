@@ -1,0 +1,46 @@
+*:
+  database:
+    type: mysql
+  mailer:
+    use: mandrill
+    from:
+      name: PICC Nigeria
+      email: info@picc.com.ng
+    to:
+      name: PICC Nigeria
+      email: info@picc.com.ng  
+  uploads:
+    cases: uploads/cases/
+
+development:
+  database:
+    name: piccdb
+    host: localhost
+    user: root
+    password:
+  memcached:
+    servers: 127.0.0.1:11211
+  mailer:
+    mandrill_apikey:
+    pretend: true
+
+production:
+  database:
+    url: %CLEARDB_DATABASE_URL%
+  memcached:
+    servers: %MEMCACHIER_SERVERS%
+    username: %MEMCACHIER_USERNAME%
+    password: %MEMCACHIER_PASSWORD%
+  mailer:
+    mandrill_apikey: %MANDRILL_APIKEY%
+    mandrill_username: %MANDRILL_USERNAME%
+  upload_to: aws
+  aws:
+    apikey: %S3_APIKEY%
+    bucket: %S3_BUCKET%
+    secret: %S3_SECRET%
+  twitter:
+    consumer_key: %TWITTER_CONSUMER_KEY%
+    consumer_secret: %TWITTER_CONSUMER_SECRET%
+    access_token: %TWITTER_ACCESS_TOKEN%
+    access_secret: %TWITTER_ACCESS_SECRET%
