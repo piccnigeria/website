@@ -35,7 +35,7 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
     className: "container"
     beforeInit: ->
       if @title? 
-        window.title = "PICC - Public Interest in Corruption Cases - " + @title
+        window.title = util.settings.siteTitle + " - " + @title
   
   Views.SubViews.IndexSlider = Views.Base.extend
     template: templates.index_slider
@@ -94,11 +94,7 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
     submit: (ev) ->
       ev.preventDefault()
       @model.create @serialize ev.currentTarget
-
-  Views.SubViews.TwitterWidgets = Views.Base.extend
-    init: ->
-      util.loadScript('twitter-wjs','platform.twitter.com/widgets.js')
-
+        
   Views.Infographics = Views.Page.extend
     title: "Infographics"
     template: templates.infographics
@@ -131,27 +127,28 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
     title: "Contact Us"
     template: templates.contact
     init: ->
-      util.loadScript('googlemaps-api','maps.google.com/maps/api/js?sensor=true')
+      console.log "initiating contact-us page"
+      console.log "loading GoogleMaps API"
+      util.loadScript 'googlemaps-api','maps.google.com/maps/api/js?sensor=true'
+      console.log "instantiating Feedback model"
       @model = new models.Feedback
       # @model.on "sync"
       # @model.on "invalid"
       # @model.on "error"
     onAttached: ->
-      map = new GMaps(
+      map = new GMaps
         div: "#map"
         lat: -13.004333
-        lng: -38.494333
-      )
-      marker = map.addMarker(
+        lng: -38.494333      
+      marker = map.addMarker
         lat: -13.004333
         lng: -38.494333
         title: "PICC Nigeria"
         infoWindow:
-          content: "<b>PICC Nigeria</b> 264 Herbert Macaulay Way, Yaba<br>Lagos, Nigeria"
-      )
+          content: "<b>PICC Nigeria</b> 264 Herbert Macaulay Way, Yaba<br>Lagos, Nigeria"      
       marker.infoWindow.open map, marker
     events: 
-      "submit form":"submit"
+      "submit form": "submit"
     submit: (ev) ->
       ev.preventDefault()
       @model.create @serialize ev.currentTarget
@@ -163,9 +160,7 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
       scrollToTop.init()
       new Views.SubViews.MenuSearch
       new Views.SubViews.FooterSubscriptionBox
-      
-      # init back-to-top here
-      # init twitter feeds
+      util.loadScript 'twitter-wjs', 'platform.twitter.com/widgets.js'
     
     render: (view)->
       @view?.remove()
@@ -175,6 +170,12 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
 
     renderIndex: ->
       @render new Views.Index
+
+    renderCases: ->
+      @render new Views.Cases
+
+    renderCase: (case_id) ->
+      @render new Views.Case case_id: case_id
 
     renderAbout: (page) ->
       @render new Views.About page: page

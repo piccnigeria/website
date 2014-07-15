@@ -8,7 +8,7 @@ define [], ->
   timeout: 3500 # i.e. 3.5s
   
   settings:
-    siteTitle: "PICC"
+    siteTitle: "PICC - Public Interest in Corruption Cases"
     rootUrl: root
     apiUrl: root + "api/"
 

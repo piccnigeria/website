@@ -25028,11 +25028,6 @@ define('text!tmpl/infographics.html',[],function () { return '<ul class="breadcr
         return this.model.create(this.serialize(ev.currentTarget));
       }
     });
-    Views.SubViews.TwitterWidgets = Views.Base.extend({
-      init: function() {
-        return util.loadScript('twitter-wjs', 'platform.twitter.com/widgets.js');
-      }
-    });
     Views.Infographics = Views.Page.extend({
       title: "Infographics",
       template: templates.infographics,
@@ -25075,7 +25070,10 @@ define('text!tmpl/infographics.html',[],function () { return '<ul class="breadcr
       title: "Contact Us",
       template: templates.contact,
       init: function() {
+        console.log("initiating contact-us page");
+        console.log("loading GoogleMaps API");
         util.loadScript('googlemaps-api', 'maps.google.com/maps/api/js?sensor=true');
+        console.log("instantiating Feedback model");
         return this.model = new models.Feedback;
       },
       onAttached: function() {
@@ -25109,7 +25107,8 @@ define('text!tmpl/infographics.html',[],function () { return '<ul class="breadcr
         responsive.init();
         scrollToTop.init();
         new Views.SubViews.MenuSearch;
-        return new Views.SubViews.FooterSubscriptionBox;
+        new Views.SubViews.FooterSubscriptionBox;
+        return util.loadScript('twitter-wjs', 'platform.twitter.com/widgets.js');
       },
       render: function(view) {
         var _ref;
