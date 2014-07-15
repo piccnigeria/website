@@ -25,4 +25,8 @@ define ['underscore','jquery','backbone','cs!frontend/models'], (_,$,Backbone,mo
     model: models.Offender
     url: "offenders"
 
+  Collections.BlogPosts = Collections.Base.extend
+    model: models.BlogPost
+    url: "posts"
+
   Collections

@@ -32,13 +32,14 @@ cp -r app/* /var/www/picc/app
 cp index.html public/index.html
 cp index.html /var/www/picc/index.html
 cp index.html /var/www/picc/public/index.html
+cp -r public/img/* /var/www/picc/public/img
 
 echo "App updated successfully!"
 
 echo "Adding changes to git..."
 git add .
 echo "Commiting changes..."
-git commit -m "Now rendering some key views"
+git commit -m "Added blog pages; included revolution-slider"
 
 echo "Deploying to Github - git@github.com:piccnigeria/website.git"
 git push origin master

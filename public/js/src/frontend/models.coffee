@@ -75,4 +75,7 @@ define ['underscore','jquery','backbone','cs!frontend/util'], (_, $, Backbone, u
   Models.Infographic = Models.Base.extend
     urlRoot: "infographics"
 
+  Models.BlogPost = Models.Base.extend
+    urlRoot: "posts"
+
   Models

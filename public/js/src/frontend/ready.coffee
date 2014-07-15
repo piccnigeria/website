@@ -1,10 +1,55 @@
-#** $ Scroll to Top Control script- (c) Dynamic Drive DHTML code library: http://www.dynamicdrive.com.
+#** Merged with $ Scroll to Top Control script- (c) Dynamic Drive DHTML code library: http://www.dynamicdrive.com.
 #** Available/ usage terms at http://www.dynamicdrive.com (March 30th, 09')
 #** v1.1 (April 7th, 09'):
 #** 1) Adds ability to scroll to an absolute position (from top of page) or specific element on the page instead.
 #** 2) Fixes scroll animation not working in Opera. 
 
 define ['jquery'], ($) ->
+
+  # isRTL = false
+  isIE8 = false
+  isIE9 = false
+  isIE10 = false
+  isIE11 = false
+  responsive = true
+  responsiveHandlers = []
+
+  handleInit = ->
+    # isRTL = true  if $("body").css("direction") is "rtl"
+    isIE8 = !!navigator.userAgent.match(/MSIE 8.0/)
+    isIE9 = !!navigator.userAgent.match(/MSIE 9.0/)
+    isIE10 = !!navigator.userAgent.match(/MSIE 10.0/)
+    isIE11 = !!navigator.userAgent.match(/MSIE 11.0/)
+    $("html").addClass "ie10"  if isIE10
+    $("html").addClass "ie11"  if isIE11
+
+  runResponsiveHandlers = ->
+    for i of responsiveHandlers
+      each = responsiveHandlers[i]
+      each.call()
+    return
+
+  handleResponsiveOnResize = ->
+    resize = undefined
+    if isIE8
+      currheight = undefined
+      $(window).resize ->
+        return  if currheight is document.documentElement.clientHeight
+        clearTimeout resize  if resize
+        resize = setTimeout(->
+          runResponsiveHandlers()
+          return
+        , 50)
+        currheight = document.documentElement.clientHeight
+        return
+
+    else
+      $(window).resize ->
+        clearTimeout resize  if resize
+        resize = setTimeout(->
+          runResponsiveHandlers()
+          return
+        , 50)
 
   scrolltotop =
     
@@ -67,7 +112,7 @@ define ['jquery'], ($) ->
         @state.isvisible = false
       return
 
-  init: ->
+  handleScrollToTop = ->
     mainobj = scrolltotop
     iebrws = document.all
     mainobj.cssfixedsupport = not iebrws or iebrws and document.compatMode is "CSS1Compat" and window.XMLHttpRequest #not IE or IE7+ browsers in standards mode
@@ -90,3 +135,14 @@ define ['jquery'], ($) ->
       false
     $(window).bind "scroll resize", (e) ->
       mainobj.togglecontrol()
+  
+  
+  initResponsive: ->
+    handleInit()
+    handleResponsiveOnResize()
+
+  addResponsiveHandler: (func) ->
+    responsiveHandlers.push func
+
+  initScrollToTop: ->
+    handleScrollToTop()

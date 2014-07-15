@@ -4,7 +4,7 @@ define [
   'text!tmpl/slider.html'
   'text!tmpl/infographics.html'
   'text!tmpl/about.html'
-  'text!tmpl/case-profile.html'
+  'text!tmpl/case.html'
   'text!tmpl/case-maps.html'
   'text!tmpl/cases.html'
   'text!tmpl/contact.html'
