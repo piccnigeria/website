@@ -5,7 +5,10 @@ define ['jquery','underscore','backbone', 'cs!frontend/views', 'cs!frontend/util
         "": "index"
         about: "about"
         "about/:page": "about"
+        faqs: "faqs"
         cases: "cases"
+        "case-maps":"case_maps"
+        contact: "contact"
         infographics: "infographics"
         blog: "blog"
         "blog/:post":"blog_post"
@@ -27,10 +30,16 @@ define ['jquery','underscore','backbone', 'cs!frontend/views', 'cs!frontend/util
         @appView.renderIndex()
 
       about: (page) ->
-        @appView.renderAbout page or "About"
+        @appView.renderStatic page or "about"
+
+      faqs: ->
+        @appView.renderStatic "faqs"
 
       cases: ->
         @appView.renderCases()
+
+      case_maps: ->
+        @appView.renderCaseMaps()
 
       contact: ->
         @appView.renderContact()

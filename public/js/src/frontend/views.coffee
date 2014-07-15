@@ -1,7 +1,7 @@
 # TODO: 
 # bower install GMaps, or include it in main page 
 # 
-define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','cs!frontend/models','cs!frontend/collections','cs!frontend/util','cs!frontend/responsive','cs!frontend/scroll-to-top'], ($, _, Backbone, templates, models, collections, util, responsive, scrollToTop) ->
+define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','cs!frontend/models','cs!frontend/collections','cs!frontend/util','cs!frontend/responsive','cs!frontend/scroll-to-top','GMaps'], ($, _, Backbone, templates, models, collections, util, responsive, scrollToTop, GMaps) ->
 
   _.extend Backbone.View::,
     serialize: (form) ->
@@ -37,9 +37,9 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
       if @title? 
         window.title = util.settings.siteTitle + " - " + @title
   
-  Views.SubViews.IndexSlider = Views.Base.extend
-    template: templates.index_slider
-    className: "page-slider margin-bottom-40"    
+  Views.SubViews.Slider = Views.Base.extend
+    template: templates.slider
+    className: "page-slider margin-bottom-40"
     init: -> $("#main").before @$el
     onAttached: ->
 
@@ -111,17 +111,65 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
           helpers:
             title:
               type: "inside"
-      @$(".mix-grid").mixitup()    
+      @$(".mix-grid").mixItUp()
 
   Views.Index = Views.Page.extend
     title: "Home"
     template: templates.index
     init: ->
-      @slider = new Views.SubViews.IndexSlider
+      @slider = new Views.SubViews.Slider
     onRendered: -> @slider.trigger "attached"
     remove: ->
       @slider.remove()
       @$el.remove()
+
+  Views.Static = Views.Page.extend
+    init: (options) ->      
+      @template = templates[options.page]
+      switch options.page
+        when 'faqs'
+          @title = "Frequently Asked Questions"
+        when 'terms'
+          @title = "Our Terms of Service"
+        when 'policy'
+          @title = "Our Privacy Policy"
+        when 'about'
+          @title = "About Us"
+
+  Views.CaseMaps = Views.Page.extend
+    title: "Case Maps"
+    template: templates.case_maps
+    init: ->
+      console.log "initiating case maps view"
+      console.log "loaded googlemaps-api"
+    onAttached: ->
+      map = new GMaps
+        div: "#map"
+        lat: -13.004333
+        lng: -38.494333      
+      marker = map.addMarker
+        lat: -13.004333
+        lng: -38.494333
+        title: "PICC Nigeria"
+        infoWindow:
+          content: "<b>PICC Nigeria</b> 264 Herbert Macaulay Way, Yaba<br>Lagos, Nigeria"
+      marker.infoWindow.open map, marker
+    events: 
+      "click form": "submit"
+    submit: (ev) ->
+      ev.preventDefault()
+      @model.create @serialize ev.currentTarget
+      
+  Views.Case = Views.Page.extend
+    template: templates.case_
+    init: ->
+      # @title = @model.get ''
+
+  Views.Cases = Views.Page.extend
+    title: 'Cases'
+    template: templates.cases
+    init: ->
+      @collection = new collections.Cases      
 
   Views.Contact = Views.Page.extend
     title: "Contact Us"
@@ -129,7 +177,7 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
     init: ->
       console.log "initiating contact-us page"
       console.log "loading GoogleMaps API"
-      util.loadScript 'googlemaps-api','maps.google.com/maps/api/js?sensor=true'
+      # util.loadScript 'googlemaps-api','maps.google.com/maps/api/js?sensor=true'
       console.log "instantiating Feedback model"
       @model = new models.Feedback
       # @model.on "sync"
@@ -171,14 +219,17 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
     renderIndex: ->
       @render new Views.Index
 
+    renderCaseMaps: ->
+      @render new Views.CaseMaps
+    
     renderCases: ->
       @render new Views.Cases
 
     renderCase: (case_id) ->
       @render new Views.Case case_id: case_id
 
-    renderAbout: (page) ->
-      @render new Views.About page: page
+    renderStatic: (page) ->
+      @render new Views.Static page: page
 
     renderBlog: ->
       @render new Views.Blog

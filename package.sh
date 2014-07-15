@@ -29,16 +29,21 @@ echo "Assets packaging complete"
 echo "|-->  copying all app/* files"
 cp -r app/* /var/www/picc/app
 
+cp index.html public/index.html
+cp index.html /var/www/picc/index.html
+cp index.html /var/www/picc/public/index.html
+
 echo "App updated successfully!"
 
-# echo "Commiting changes..."
-# git add .
-# git commit -m "Commit message here"
+echo "Adding changes to git..."
+git add .
+echo "Commiting changes..."
+git commit -m "Now rendering some key views"
 
-# echo "Deploying to Github - git@github.com:piccnigeria/website.git"
-# git push origin master
+echo "Deploying to Github - git@github.com:piccnigeria/website.git"
+git push origin master
 
-# echo "Deploying to Heroku - git@heroku.com:piccnigeria.git"
-# git push heroku master
+echo "Deploying to Heroku - git@heroku.com:piccnigeria.git"
+git push heroku master
 
-# echo "Production deployment complete"
+echo "Production deployment complete"

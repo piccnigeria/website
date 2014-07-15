@@ -19,7 +19,7 @@ require.config({
     tmpl:'../../templates',
 
     // Others
-    gmaps:'libs/gmaps/gmaps',
+    GMaps:'libs/gmaps/gmaps',
     respond:'libs/respond/src/respond',
     dropzone:'libs/dropzone/downloads/dropzone',
     
