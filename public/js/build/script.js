@@ -1,7 +1,9 @@
 ({  
   mainConfigFile:'configuration.js',
   name:'frontend/index',
-  out:'../script.js',
+  preserveLicenseComments: false,
+  generateSourceMaps: true,
+  out:'../script.min.js',
   include:'libs/requirejs/require.js',
-  optimize:'none' // optimize:'uglify2'
+  optimize:'uglify2'
 })

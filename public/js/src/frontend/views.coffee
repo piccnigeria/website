@@ -219,14 +219,14 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
     onAttached: ->
       map = new GMaps
         div: "#map"
-        lat: -13.004333
-        lng: -38.494333      
+        lat: 6.504098
+        lng: 3.377853
       marker = map.addMarker
-        lat: -13.004333
-        lng: -38.494333
+        lat: 6.504098
+        lng: 3.377853
         title: "PICC Nigeria"
         infoWindow:
-          content: "<b>PICC Nigeria</b> 264 Herbert Macaulay Way, Yaba<br>Lagos, Nigeria"      
+          content: "<b>PICC Nigeria</b><br>Co-Creation Hub<br>294 Herbert Macaulay Way, Yaba<br>Lagos, Nigeria"
       marker.infoWindow.open map, marker
     events: 
       "submit form": "submit"

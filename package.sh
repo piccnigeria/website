@@ -19,10 +19,10 @@ echo "|-->  r.js -o public/js/build/script.js"
 # /usr/local/bin/r.js -o public/js/build/admin.js
 
 echo "|-->  copying style.css"
-cp public/css/style.css /var/www/picc/public/css/style.css
+cp public/css/style.css /var/www/picc/public/css
 
 echo "|-->  copying script.js"
-cp public/js/script.js /var/www/picc/public/js/script.js
+cp public/js/script.* /var/www/picc/public/js
 
 echo "Assets packaging complete"
 
@@ -36,10 +36,12 @@ cp -r public/img/* /var/www/picc/public/img
 
 echo "App updated successfully!"
 
+# exit
+
 echo "Adding changes to git..."
 git add .
 echo "Commiting changes..."
-git commit -m "Added blog pages; included revolution-slider"
+git commit -m "Minified script.js; corrected contact address"
 
 echo "Deploying to Github - git@github.com:piccnigeria/website.git"
 git push origin master

@@ -35,6 +35,10 @@ require.config({
     '$.pulsate':'libs/pulsate/jquery.pulsate',
     '$.select2':'libs/select2/select2',
     '$.owl':'libs/owl-carousel/owl-carousel/owl.carousel',
+    '$.maxlength':'libs/bootstrap-maxlength/bootstrap-maxlength',
+    '$.easypie':'libs/easypie/dist/jquery.easypiechart',
+    '$.gritter':'libs/jquery.gritter/js/jquery.gritter',
+    '$.toastr':'libs/toastr/toastr',
 
     // Revolution slider
     '$.rs':'libs/slider-revolution-slider/rs-plugin/js/jquery.themepunch.plugins.min',

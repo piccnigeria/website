@@ -40,7 +40,11 @@
     "typeahead.js": "~0.10.4",
     "bower-mixitup": "~2.0.4",
     "select2": "~3.5.0",
-    "jquery-multiselect": "*"
+    "jquery-multiselect": "*",
+    "toastr": "~2.0.3",
+    "jquery.gritter": "*",
+    "bootstrap-maxlength": "~1.5.4",
+    "easypie": "~2.1.4"
   },
   "devDependencies": {
     "jasmine": "~2.0.0"
