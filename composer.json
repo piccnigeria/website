@@ -8,6 +8,7 @@
     "ext-mbstring":"*",
     "ultractiv/lean": "dev-master",
     "mandrill/mandrill": ">=1.0.53",
+    "aws/aws-sdk-php":"~2.6.11",
     "monolog/monolog": "1.10.0"
   },
   "authors": [

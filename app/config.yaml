@@ -34,11 +34,11 @@ production:
   mailer:
     mandrill_apikey: %MANDRILL_APIKEY%
     mandrill_username: %MANDRILL_USERNAME%
-  upload_to: aws
+  upload_to: s3
   aws:
-    apikey: %S3_APIKEY%
+    access_key_id: %AWS_ACCESS_KEY_ID%
+    secret_access_key: %AWS_SECRET_ACCESS_KEY%
     bucket: %S3_BUCKET%
-    secret: %S3_SECRET%
   twitter:
     consumer_key: %TWITTER_CONSUMER_KEY%
     consumer_secret: %TWITTER_CONSUMER_SECRET%

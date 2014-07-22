@@ -36,7 +36,7 @@ cp -r public/img/* /var/www/picc/public/img
 
 echo "App updated successfully!"
 
-# exit
+exit
 
 echo "Adding changes to git..."
 git add .
