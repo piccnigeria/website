@@ -32,13 +32,15 @@ require.config({
     '$.fileupload':'libs/jquery-file-upload/js/jquery.fileupload',
     '$.easing':'libs/jquery.easing/js/jquery.easing',
     '$.flot':'libs/flot/jquery.flot',
-    '$.pulsate':'libs/pulsate/jquery.pulsate',
+    '$.pulsate':'libs/jquery.pulsate/jquery.pulsate',
     '$.select2':'libs/select2/select2',
     '$.owl':'libs/owl-carousel/owl-carousel/owl.carousel',
     '$.maxlength':'libs/bootstrap-maxlength/bootstrap-maxlength',
     '$.easypie':'libs/easypie/dist/jquery.easypiechart',
     '$.gritter':'libs/jquery.gritter/js/jquery.gritter',
     '$.toastr':'libs/toastr/toastr',
+    '$.slimscroll':'libs/slimScroll/jquery.slimscroll',
+    '$.ui':'libs/jquery-ui/jquery-ui',
 
     // Revolution slider
     '$.rs':'libs/slider-revolution-slider/rs-plugin/js/jquery.themepunch.plugins.min',

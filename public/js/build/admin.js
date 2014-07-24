@@ -1,7 +1,9 @@
 ({  
   mainConfigFile:'configuration.js',
   name:'admin/index',
-  out:'../admin.js',
+  preserveLicenseComments: false,
+  generateSourceMaps: true,
+  out:'../admin/script.min.js',
   include:'libs/requirejs/require.js',
-  optimize:'none' // optimize:'uglify2'
+  optimize:'uglify2'
 })

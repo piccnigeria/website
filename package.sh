@@ -1,31 +1,45 @@
 #!/bin/bash
 clear
 
-echo "Running packaging clientside assets"
+echo "Running packaging frontend clientside assets"
+echo "|-->  lessc --no-color -x --clean-css public/css/src/frontend/style.less public/css/style.css"
+/usr/local/bin/lessc public/css/src/frontend/style.less public/css/style.css
+/usr/local/bin/lessc --no-color --clean-css public/css/src/frontend/style.less public/css/style.min.css
 
-echo "|-->  lessc --no-color -x --clean-css public/css/src/style.less public/css/style.css"
-/usr/local/bin/lessc --no-color --clean-css public/css/src/frontend/style.less public/css/style.css
+echo "Running packaging admin clientside assets"
+echo "|-->  lessc --no-color -x --clean-css public/css/src/admin/style.less public/css/admin/style.css"
+/usr/local/bin/lessc public/css/src/admin/style.less public/css/admin/style.css
+/usr/local/bin/lessc --no-color --clean-css public/css/src/admin/style.less public/css/admin/style.min.css
 
 # echo "Packing tests scripts"
 # echo "|-->  r.js -o public/js/build/tests.js"
 # /usr/local/bin/r.js -o public/js/build/tests.js
 
-echo "Packing frontend scripts"
+echo "Packing frontend javascripts"
 echo "|-->  r.js -o public/js/build/script.js"
+/usr/local/bin/r.js -o public/js/build/script.js optimize=none out=public/js/script.js preserveLicenseComments=true generateSourceMaps=false
 /usr/local/bin/r.js -o public/js/build/script.js
 
-# echo "Packing backend scripts"
-# echo "|-->  r.js -o public/js/build/admin.js"
-# /usr/local/bin/r.js -o public/js/build/admin.js
+echo "Packing admin javascripts"
+echo "|-->  r.js -o public/js/build/admin.js"
+/usr/local/bin/r.js -o public/js/build/admin.js optimize=none out=public/js/admin/script.js preserveLicenseComments=true generateSourceMaps=false
+/usr/local/bin/r.js -o public/js/build/admin.js
 
-echo "|-->  copying style.css"
-cp public/css/style.css /var/www/picc/public/css
+exit
 
-echo "|-->  copying script.js"
+echo "Copying static files for frontend to /var/www/picc"
+echo "|-->  copying stylesheets"
+cp public/css/style.* /var/www/picc/public/css
+echo "|-->  copying js scripts"
 cp public/js/script.* /var/www/picc/public/js
 
-echo "Assets packaging complete"
+echo "Copying static files for admin to /var/www/picc"
+echo "|-->  copying admin stylesheets"
+cp public/css/admin/style.* /var/www/picc/public/css/admin
+echo "|-->  copying admin js scripts"
+cp public/js/admin/script.* /var/www/picc/public/js/admin
 
+echo "Assets packaging complete"
 echo "|-->  copying all app/* files"
 cp -r app/* /var/www/picc/app
 
@@ -40,13 +54,14 @@ exit
 
 echo "Adding changes to git..."
 git add .
-echo "Commiting changes..."
-git commit -m "Minified script.js; corrected contact address"
 
-echo "Deploying to Github - git@github.com:piccnigeria/website.git"
+echo "Committing changes to git..."
+git commit -m ""
+
+echo "Pushing changes to Github - git@github.com:piccnigeria/website.git"
 git push origin master
 
-echo "Deploying to Heroku - git@heroku.com:piccnigeria.git"
+echo "Pushing changes to Heroku - git@heroku.com:piccnigeria.git"
 git push heroku master
 
-echo "Production deployment complete"
+echo "Packaging executed successfully!"
