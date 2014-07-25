@@ -1,6 +1,22 @@
 #!/bin/bash
 clear
 
+echo "Adding changes to git..."
+git add .
+
+echo "Committing changes to git..."
+git commit -m "Updated twitter widget id"
+
+echo "Pushing changes to Github - git@github.com:piccnigeria/website.git"
+git push origin master
+
+echo "Pushing changes to Heroku - git@heroku.com:piccnigeria.git"
+git push heroku master
+
+echo "Packaging executed successfully!"
+
+exit
+
 echo "Running packaging frontend clientside assets"
 echo "|-->  lessc --no-color -x --clean-css public/css/src/frontend/style.less public/css/style.css"
 /usr/local/bin/lessc public/css/src/frontend/style.less public/css/style.css
@@ -56,7 +72,7 @@ echo "Adding changes to git..."
 git add .
 
 echo "Committing changes to git..."
-git commit -m ""
+git commit -m "Updated twitter widget id"
 
 echo "Pushing changes to Github - git@github.com:piccnigeria/website.git"
 git push origin master
