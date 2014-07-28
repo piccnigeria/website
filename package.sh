@@ -1,19 +1,22 @@
 #!/bin/bash
 clear
 
+cp index.html public/index.html
+cp index.html /var/www/picc/index.html
+cp index.html /var/www/picc/public/index.html
+cp -r public/img/* /var/www/picc/public/img
+
 echo "Adding changes to git..."
 git add .
 
 echo "Committing changes to git..."
-git commit -m "Updated twitter widget id"
+git commit -m "Updated with new PICC logo."
 
 echo "Pushing changes to Github - git@github.com:piccnigeria/website.git"
 git push origin master
 
 echo "Pushing changes to Heroku - git@heroku.com:piccnigeria.git"
 git push heroku master
-
-echo "Packaging executed successfully!"
 
 exit
 
