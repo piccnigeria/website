@@ -3,6 +3,9 @@ composer.phar
 vendor
 uploads
 *.mwb.*
+docs/*.csv
+docs/*.xls
+docs/*.xlsx
 public/css/src/bootstrap
 public/js/src/libs
 public/js/src/frontend/layout.coffee
