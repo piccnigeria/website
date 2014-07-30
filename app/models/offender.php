@@ -4,7 +4,7 @@ class Offender extends \Lean\Model\Base {
 
   protected $validations = array(
     'create' => array(
-      'presence' => 'name title office'       
+      'presence' => 'name'       
     ),
     'update' => array(
       'not_null' => 'title name office',

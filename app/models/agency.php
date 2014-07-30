@@ -6,7 +6,7 @@ class Agency extends \Lean\Model\Base {
 
   protected $validations = array(
     'create' => array(
-      'presence' => 'name acronym description',
+      'presence' => 'name acronym',
       'unique' => 'acronym'       
       ),
     'update' => array(
@@ -33,7 +33,7 @@ class Agency extends \Lean\Model\Base {
   }
   
   protected function beforeCreate(array &$attrs){
-    $attrs ['name'] = ucwords( strtolower( $attrs['name'] ) );
+    // $attrs ['name'] = $attrs['name'];
     $attrs ['acronym'] = strtoupper($attrs['acronym']);
   }
 

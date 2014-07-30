@@ -6,11 +6,11 @@ class Court extends \Lean\Model\Base {
 
 	protected $validations = array(
   	  'create' => array(
-  	    'presence' => 'type location state',
-  	    'unique_together' => 'type location'
+  	    'presence' => 'name state',
+  	    'unique_together' => 'name state'
   	  ),
   	  'update' => array(
-  	    'not_null' => 'type location state'
+  	    'not_null' => 'name location state'
   	  )
   	);
 
