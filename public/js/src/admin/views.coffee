@@ -1,32 +1,31 @@
 define ['cs!admin/plugins','underscore','backbone','cs!admin/templates','cs!frontend/models','cs!frontend/collections','cs!frontend/util'], ($, _, Backbone, templates, models, collections, util) ->
-
+  
   _.extend Backbone.View::,
     serialize: (form) ->
       data = $(form).serializeArray()
       keys = _.pluck data, "name"
       values = _.pluck data, "value"
-      _.object keys, values
+      _.object keys, values  
 
   Views = 
-
     SubViews: {}
-    
+    Modal: Backbone.View.extend
     Base: Backbone.View.extend
       initialize: (options) ->
-        @on("rendered", @onRendered, @) if @onRendered?
         @on("attached", @onAttached, @) if @onAttached?
         @on("detached", @onDetached, @) if @onDetached?
+        @on("rendered", @onRendered, @) if @onRendered?
         @beforeInit?()
         @init?(options)
+        @collection.on("reset add remove", @render, @) if @isCollectionView?
+        @model.on("change", @render, @) if @isModelView?
         @render()
       data: ->
         @collection?.toJSON() or @model?.toJSON() or {}
       render: ->
         @$el.html @template @data()
         @trigger "rendered"
-        @
-
-    Modal: Backbone.View.extend
+        @  
 
   Views.Page = Views.Base.extend
     className: "container"

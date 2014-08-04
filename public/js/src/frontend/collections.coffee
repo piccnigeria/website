@@ -27,6 +27,6 @@ define ['underscore','jquery','backbone','cs!frontend/models'], (_,$,Backbone,mo
 
   Collections.BlogPosts = Collections.Base.extend
     model: models.BlogPost
-    url: "posts"
+    url: "posts" # path to the WP restful backend
 
   Collections

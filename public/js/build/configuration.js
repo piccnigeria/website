@@ -24,12 +24,12 @@ require.config({
     dropzone:'libs/dropzone/downloads/dropzone',
     
     // jQuery Plugins
-    '$.fancybox':'libs/fancybox/source/jquery.fancybox',    
-    '$.uniform':'libs/jquery.uniform/jquery.uniform',    
+    '$.fancybox':'libs/fancybox/source/jquery.fancybox',
+    '$.fileupload':'libs/jquery-file-upload/js/jquery.fileupload',
+    '$.uniform':'libs/jquery.uniform/jquery.uniform',
     '$.datatables':'libs/datatables/media/js/jquery.dataTables',
     '$.mixitup':'libs/bower-mixitup/src/jquery.mixitup',
     '$.multiselect':'libs/jquery-multiselect/jquery.multiselect',
-    '$.fileupload':'libs/jquery-file-upload/js/jquery.fileupload',
     '$.easing':'libs/jquery.easing/js/jquery.easing',
     '$.flot':'libs/flot/jquery.flot',
     '$.pulsate':'libs/jquery.pulsate/jquery.pulsate',

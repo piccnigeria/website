@@ -44,11 +44,22 @@ define ['underscore','jquery','backbone','cs!frontend/util'], (_, $, Backbone, u
           success: callback
 
   Models.Agency = Models.Base.extend
+    urlRoot: "agencies"
+  
   Models.Court = Models.Base.extend
+    urlRoot: "courts"
+  
   Models.Case = Models.Base.extend
+    urlRoot: "cases"
+  
   Models.Judge = Models.Base.extend
+    urlRoot: "judges"
+  
   Models.Offender = Models.Base.extend
+    urlRoot: "offenders"
+  
   Models.Trial = Models.Base.extend
+    urlRoot: "trials"
 
   Models.CaseSubscription = Models.Base.extend
     urlRoot: "subscriptions"

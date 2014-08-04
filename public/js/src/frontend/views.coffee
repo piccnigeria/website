@@ -1,35 +1,34 @@
 # TODO: 
 # bower install GMaps, or include it in main page 
-# 
-define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','cs!frontend/models','cs!frontend/collections','cs!frontend/util','cs!frontend/ready','GMaps'], ($, _, Backbone, templates, models, collections, util, ready, GMaps) ->
-
+# 'GMaps', GMaps
+define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','cs!frontend/models','cs!frontend/collections','cs!frontend/util','cs!frontend/ready'], ($, _, Backbone, templates, models, collections, util, ready) ->
+  
   _.extend Backbone.View::,
     serialize: (form) ->
       data = $(form).serializeArray()
       keys = _.pluck data, "name"
       values = _.pluck data, "value"
       _.object keys, values
-
+  
   Views = 
-
     SubViews: {}
-    
+    Modal: Backbone.View.extend
     Base: Backbone.View.extend
       initialize: (options) ->
-        @on("rendered", @onRendered, @) if @onRendered?
         @on("attached", @onAttached, @) if @onAttached?
         @on("detached", @onDetached, @) if @onDetached?
+        @on("rendered", @onRendered, @) if @onRendered?
         @beforeInit?()
         @init?(options)
+        @collection.on("reset add remove", @render, @) if @isCollectionView?
+        @model.on("change", @render, @) if @isModelView?
         @render()
       data: ->
         @collection?.toJSON() or @model?.toJSON() or {}
       render: ->
         @$el.html @template @data()
         @trigger "rendered"
-        @
-
-    Modal: Backbone.View.extend
+        @  
 
   Views.Page = Views.Base.extend
     className: "container"
@@ -46,34 +45,10 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
         delay: 2000
         startheight: 417
         startwidth: 1150
-        hideThumbs: 10
-        thumbWidth: 100 # Thumb With and Height and Amount (only if navigation Tyope set to thumb !)
-        thumbHeight: 50
-        thumbAmount: 5
-        navigationType: "bullet" # bullet, thumb, none
-        navigationArrows: "solo" # nexttobullets, solo (old name verticalcentered), none
-        navigationStyle: "round" # round,square,navbar,round-old,square-old,navbar-old, or any from the list in the docu (choose between 50+ different item), custom
-        navigationHAlign: "center" # Vertical Align top,center,bottom
-        navigationVAlign: "bottom" # Horizontal Align left,center,right
-        navigationHOffset: 0
-        navigationVOffset: 20
-        soloArrowLeftHalign: "left"
-        soloArrowLeftValign: "center"
-        soloArrowLeftHOffset: 20
-        soloArrowLeftVOffset: 0
-        soloArrowRightHalign: "right"
-        soloArrowRightValign: "center"
-        soloArrowRightHOffset: 20
-        soloArrowRightVOffset: 0
-        touchenabled: "on" # Enable Swipe Function : on/off
-        onHoverStop: "on" # Stop Banner Timet at Hover on Slide on/off
-        stopAtSlide: -1
-        stopAfterLoops: -1
-        hideCaptionAtLimit: 0 # It Defines if a caption should be shown under a Screen Resolution ( Basod on The Width of Browser)
-        hideAllCaptionAtLilmit: 0 # Hide all The Captions if Width of Browser is less then this value
-        hideSliderAtLimit: 0 # Hide the whole slider, and stop also functions if Width of Browser is less than this value
-        shadow: 1 #0 = no Shadow, 1,2,3 = 3 Different Art of Shadows  (No Shadow in Fullwidth Version !)
-        fullWidth: "on" # Turns On or Off the Fullwidth Image Centering in FullWidth Modus
+        hideThumbs: 10        
+        thumbAmount: 5        
+        shadow: 1
+        fullWidth: "on"
 
   Views.SubViews.FooterSubscriptionBox = Backbone.View.extend
     el: '.pre-footer-subscribe-box'
@@ -139,7 +114,6 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
           groupAttr: "data-rel"
           prevEffect: "none"
           nextEffect: "none"
-          closeBtn: true
           helpers:
             title:
               type: "inside"
@@ -151,6 +125,23 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
     init: ->
       @slider = new Views.SubViews.Slider
     onRendered: -> @slider.trigger "attached"
+    onAttached: ->
+      $(".owl-carousel6-brands").owlCarousel
+        pagination: false
+        navigation: true
+        items: 6
+        addClassActive: true
+        itemsCustom: [
+          [0, 1]
+          [320, 1]
+          [480, 2]
+          [700, 3]
+          [975, 5]
+          [1200, 6]
+          [1400, 6]
+          [1600, 6]
+        ]
+            
     remove: ->
       @slider.remove()
       @$el.remove()
@@ -174,6 +165,7 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
     init: ->
       @collection = new collections.Cases
     onAttached: ->
+      ###
       map = new GMaps
         div: "#map"
         lat: -13.004333
@@ -184,27 +176,33 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
         title: "A sample case title"
         infoWindow:
           content: "<b>A sample case title</b> At Federal High Court, Lagos"
-      # marker.infoWindow.open map, marker    
+      marker.infoWindow.open map, marker
+      ###      
       
   Views.Case = Views.Page.extend
     template: templates.case_
+    isModelView: true
     init: ->
       # @title = @model.get ''
 
   Views.Cases = Views.Page.extend
     title: 'Cases'
     template: templates.cases
+    isCollectionView: true
     init: ->
       @collection = new collections.Cases
 
+
   Views.BlogPost = Views.Page.extend
     template: templates.blog_post
+    isModelView: true
     init: ->
       # @title = @model.get ''
 
   Views.Blog = Views.Page.extend
     title: 'PICC Blog'
     template: templates.blog
+    isCollectionView: true
     init: ->
       @collection = new collections.BlogPosts
 
@@ -214,9 +212,10 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
     init: ->
       @model = new models.Feedback
       @model.on "invalid error", @alert, @      
-    alert: ->      
+    alert: ->
       alert @model.validationError or @model.xhrError
     onAttached: ->
+      ###
       map = new GMaps
         div: "#map"
         lat: 6.504098
@@ -228,6 +227,7 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
         infoWindow:
           content: "<b>PICC Nigeria</b><br>Co-Creation Hub<br>294 Herbert Macaulay Way, Yaba<br>Lagos, Nigeria"
       marker.infoWindow.open map, marker
+      ###
     events: 
       "submit form": "submit"
     submit: (ev) ->

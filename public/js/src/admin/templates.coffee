@@ -1,5 +1,6 @@
 define [
   'handlebars'
+  'text!tmpl/admin/auth.html'
   'text!tmpl/admin/index.html'
   'text!tmpl/admin/layout.html'
   'text!tmpl/admin/dashboard.html'  
@@ -15,6 +16,7 @@ define [
   ],
   (
     Handlebars,
+    authTmpl,
     indexTmpl,
     layoutTmpl,
     dashboardTmpl,
@@ -30,6 +32,7 @@ define [
   ) ->
 
     layout: Handlebars.compile layoutTmpl
+    auth: Handlebars.compile authTmpl
     index: Handlebars.compile indexTmpl
     dashboard: Handlebars.compile dashboardTmpl
     infographics: Handlebars.compile infographicsTmpl
