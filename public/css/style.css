@@ -20372,11 +20372,6 @@ Notes
   margin-left: 2px;
   position: relative;
 }
-.our-clients .owl-buttons {
-  left: -74px;
-  right: auto;
-  top: 0;
-}
 .our-clients .client-item img {
   margin-left: auto;
   margin-right: auto;
@@ -20389,6 +20384,11 @@ Notes
 }
 .our-clients .client-item:hover .color-img {
   display: block;
+}
+.our-clients .owl-buttons {
+  left: -74px;
+  right: auto;
+  top: 0;
 }
 /* Front Carousel */
 .front-carousel .carousel-control {

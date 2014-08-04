@@ -129,17 +129,17 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
       $(".owl-carousel6-brands").owlCarousel
         pagination: false
         navigation: true
-        items: 6
+        items: 4
         addClassActive: true
         itemsCustom: [
           [0, 1]
           [320, 1]
           [480, 2]
           [700, 3]
-          [975, 5]
-          [1200, 6]
-          [1400, 6]
-          [1600, 6]
+          [975, 4]
+          [1200, 4]
+          [1400, 4]
+          [1600, 4]
         ]
             
     remove: ->

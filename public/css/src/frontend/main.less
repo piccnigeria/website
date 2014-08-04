@@ -2020,40 +2020,42 @@ Notes
 }
 
 /* our clients */
-.our-clients {
+.our-partners {
   position: relative;
-}
-.our-clients h2{
-  margin: 3px 0 5px;
-}
-.our-clients h2 a {
-  color: #3e4d5c;
-}
-.our-clients h2 a:hover {
-  color: #E02222;
-}
-.our-clients .client-item {
-  background: #f8f8f8;
-  margin-left: 2px;
-  position: relative;
-}
-.our-clients .owl-buttons {
-  left: -74px;
-  right: auto;
+  h2{
+    margin: 3px 0 5px;
+    a {
+      color: #3e4d5c;
+      &:hover {
+        color: #E02222;
+      }
+    }
+  }
+  .client-item {
+    background: #f8f8f8;
+    margin-left: 2px;
+    position: relative;
+    img {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .color-img {
+      display: none;
+    }
+    &:hover {
+      img {
+        display: none;
+      }
+      .color-img {
+        display: block;
+      }
+    }
+  }
+  .owl-buttons {
+    left: -74px;
+    right: auto;
     top: 0;
-}
-.our-clients .client-item img {
-  margin-left: auto;
-  margin-right: auto;
-}
-.our-clients .client-item .color-img {
-  display: none;
-}
-.our-clients .client-item:hover img {
-  display: none;
-}
-.our-clients .client-item:hover .color-img {
-  display: block;
+  }
 }
 
 /* Front Carousel */
