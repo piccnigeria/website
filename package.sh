@@ -65,12 +65,13 @@ cp -r public/img/* ${www_root}public/img
 
 echo "App updated successfully!"
 
-exit
-
 echo "Adding changes to git..."
 git add .
 echo "Committing changes to git..."
-git commit -m "Updated twitter widget id"
+git commit -m "Updated with relevant content & class names etc"
+
+exit
+
 echo "Pushing changes to Github - git@github.com:piccnigeria/website.git"
 git push origin master
 echo "Pushing changes to Heroku - git@heroku.com:piccnigeria.git"

@@ -108,15 +108,14 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
     init: ->
       @collection = new collections.Infographics
     onAttached: ->
-      @$(".fancybox-fast-view").fancybox()
-      if @$(".fancybox-button").size() > 0
-        @$(".fancybox-button").fancybox
-          groupAttr: "data-rel"
-          prevEffect: "none"
-          nextEffect: "none"
-          helpers:
-            title:
-              type: "inside"
+      @$(".fancybox-fast-view").fancybox()      
+      @$(".fancybox-button").fancybox
+        groupAttr: "data-rel"
+        prevEffect: "none"
+        nextEffect: "none"
+        helpers:
+          title:
+            type: "inside"
       @$(".mix-grid").mixItUp()
 
   Views.Index = Views.Page.extend
@@ -126,22 +125,50 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
       @slider = new Views.SubViews.Slider
     onRendered: -> @slider.trigger "attached"
     onAttached: ->
-      $(".owl-carousel6-brands").owlCarousel
+      # initializes the partners' logos scroller
+      @$(".owl-carousel6-brands").owlCarousel
         pagination: false
         navigation: true
         items: 4
         addClassActive: true
         itemsCustom: [
-          [0, 1]
-          [320, 1]
-          [480, 2]
-          [700, 3]
-          [975, 4]
-          [1200, 4]
-          [1400, 4]
-          [1600, 4]
+          [0,1]
+          [320,1]
+          [480,2]
+          [700,3]
+          [975,4]
+          [1200,4]
+          [1400,4]
+          [1600,4]
         ]
-            
+
+      # initializes the infographics' images scroller
+      @$(".owl-carousel3").owlCarousel
+        pagination: false
+        navigation: true
+        items: 3
+        addClassActive: true
+        itemsCustom: [
+          [0,1]
+          [320,1]
+          [480,2]
+          [700,3]
+          [768,2]
+          [1024,3]
+          [1200,3]
+          [1400,3]
+          [1600,3]
+        ]
+      
+      # @$(".fancybox-fast-view").fancybox()
+      @$(".fancybox-button").fancybox
+        groupAttr: "data-rel"
+        prevEffect: "none"
+        nextEffect: "none"
+        helpers:
+          title:
+            type: "inside"
+
     remove: ->
       @slider.remove()
       @$el.remove()

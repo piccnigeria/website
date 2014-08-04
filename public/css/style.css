@@ -16467,31 +16467,32 @@ fieldset[disabled] .purple-seance.btn.active {
   .quote-v1 .text-right {
     text-align: center;
   }
-  .recent-work .owl-carousel {
+  .recent-infographics .owl-carousel {
     margin-left: -10px;
   }
-  .our-clients .owl-carousel {
+  .partners .owl-carousel {
     margin-left: -2px;
   }
-  .recent-work .owl-carousel,
-  .our-clients .owl-carousel {
+  .recent-infographics .owl-carousel,
+  .partners .owl-carousel {
     padding-top: 30px;
   }
-  .recent-work .owl-buttons,
-  .our-clients .owl-buttons {
+  .recent-infographics .owl-buttons,
+  .partners .owl-buttons {
     top: 0;
     left: -3px;
   }
-  .our-clients .owl-buttons {
+  .partners .owl-buttons {
     left: -10px;
   }
-  .testimonials-v1 {
+  .testimonials {
     padding-top: 40px;
   }
-  .recent-work .recent-work-item .fa {
+  .recent-infographics .recent-infographic-item .fa {
     width: 36px;
     height: 36px;
     margin-top: -18px;
+    margin-left: -18px;
     font-size: 14px;
     padding: 12px;
   }
@@ -16575,7 +16576,7 @@ fieldset[disabled] .purple-seance.btn.active {
   .tab-style-1 .tab-content img {
     margin: 5px 0 10px;
   }
-  .testimonials-v1 {
+  .testimonials {
     padding-top: 20px;
   }
   .front-steps-wrapper {
@@ -20032,9 +20033,6 @@ Custom icon buttons
   -moz-box-shadow: none;
   box-shadow: none;
 }
-/***
-Notes
-***/
 /* Common styles for all types */
 .note {
   margin: 0 0 20px 0;
@@ -20156,14 +20154,6 @@ Notes
   margin: 5px;
   display: inline-block;
 }
-.quote-v1 span {
-  color: #fff;
-  font-size: 22px;
-  font-weight: 300;
-  margin: 13px 5px 8px;
-  line-height: 26px;
-  display: inline-block;
-}
 .quote-v1 a.btn-transparent {
   color: #fff;
   font-size: 16px;
@@ -20184,62 +20174,60 @@ Notes
 .quote-v1 a.btn-transparent i {
   margin-right: 10px;
 }
+.quote-v1 span {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 300;
+  margin: 13px 5px 8px;
+  line-height: 26px;
+  display: inline-block;
+}
 /* Recent Works */
-.recent-work {
+.recent-infographics {
   position: relative;
 }
-.recent-work a:hover {
+.recent-infographics a:hover {
   text-decoration: none;
 }
-.recent-work h2 {
+.recent-infographics h2 {
   margin: 3px 0 5px;
 }
-.recent-work h2 a {
+.recent-infographics h2 a {
   color: #3e4d5c;
 }
-.recent-work h2 a:hover {
+.recent-infographics h2 a:hover {
   color: #E02222;
 }
-.recent-work-item {
-  padding-left: 10px;
-}
-.recent-work .owl-buttons {
+.recent-infographics .owl-buttons {
   left: -74px;
   right: auto;
   top: 0;
 }
-.recent-work .recent-work-item a.recent-work-description {
+.recent-infographics .recent-infographic-item {
+  padding-left: 10px;
+}
+.recent-infographics .recent-infographic-item a.recent-infographic-description {
   padding: 10px;
   display: block;
   background: #fff;
 }
-.recent-work .recent-work-item:hover a.recent-work-description {
-  background: #E6400C;
-  transition: all 0.9s ease;
-  -o-transition: all 0.9s ease;
-  -moz-transition: all 0.9s ease;
-  -webkit-transition: all 0.9s ease;
-}
-.recent-work .recent-work-item strong {
+.recent-infographics .recent-infographic-item strong {
   color: #000;
   display: block;
   font-size: 16px;
   font-weight: 300;
 }
-.recent-work .recent-work-item b {
+.recent-infographics .recent-infographic-item b {
   color: #656565;
   font-weight: 300;
 }
-.recent-work .recent-work-item:hover b,
-.recent-work .recent-work-item:hover strong {
-  color: #fff;
-}
-.recent-work .recent-work-item em {
+.recent-infographics .recent-infographic-item em {
   display: block;
   overflow: hidden;
   position: relative;
+  text-align: center;
 }
-.recent-work .recent-work-item .fa {
+.recent-infographics .recent-infographic-item .fa {
   color: #fff;
   padding: 16px 30px 16px 18px;
   font-size: 16px;
@@ -20247,7 +20235,7 @@ Notes
   top: 50%;
   width: 47px;
   height: 47px;
-  margin-top: -23.5px;
+  margin: -23.5px auto 0 -23.5px;
   border-radius: 47px;
   background: rgba(0, 0, 0, 0.5);
   transition: all 0.6s ease;
@@ -20255,24 +20243,29 @@ Notes
   -moz-transition: all 0.6s ease;
   -webkit-transition: all 0.6s ease;
 }
-.recent-work .recent-work-item .fa:hover {
+.recent-infographics .recent-infographic-item .fa:hover {
   color: #E02222;
 }
-.recent-work .recent-work-item .fa-link {
-  left: -100px;
+.recent-infographics .recent-infographic-item .fa-search {
+  top: -120px;
 }
-.recent-work .recent-work-item .fa-search {
-  right: -100px;
+.recent-infographics .recent-infographic-item:hover b,
+.recent-infographics .recent-infographic-item:hover strong {
+  color: #fff;
 }
-.recent-work .recent-work-item:hover .fa-link {
-  left: 30%;
+.recent-infographics .recent-infographic-item:hover a.recent-infographic-description {
+  background: #E6400C;
+  transition: all 0.9s ease;
+  -o-transition: all 0.9s ease;
+  -moz-transition: all 0.9s ease;
+  -webkit-transition: all 0.9s ease;
 }
-.recent-work .recent-work-item:hover .fa-search {
-  right: 30%;
+.recent-infographics .recent-infographic-item:hover .fa-search {
+  top: 50%;
 }
 /* Mixed Block */
 /* Testimonials */
-.testimonials-v1 blockquote {
+.testimonials blockquote {
   padding: 15px;
   border: none;
   color: #666;
@@ -20282,7 +20275,7 @@ Notes
   background: #F8F8F8;
   position: relative;
 }
-.testimonials-v1 blockquote:before {
+.testimonials blockquote:before {
   content: " ";
   display: block;
   position: absolute;
@@ -20294,7 +20287,7 @@ Notes
   border-right: 22px inset rgba(0, 0, 0, 0);
   border-top: 22px solid #F8F8F8;
 }
-.testimonials-v1 blockquote:after {
+.testimonials blockquote:after {
   width: 13px;
   height: 13px;
   z-index: 23;
@@ -20305,34 +20298,32 @@ Notes
   bottom: 0;
   background: #e6400c url(../img/blockquote-corner.png) no-repeat;
 }
-.testimonials-v1 .carousel-info img {
+.testimonials .carousel-info {
+  overflow: hidden;
+}
+.testimonials .carousel-info img {
   width: 75px;
   height: 75px;
   padding: 3px;
   border-radius: 150px !important;
   border: solid 1px #f5f5f5;
-}
-.testimonials-v1 .carousel-info {
-  overflow: hidden;
-}
-.testimonials-v1 .carousel-info img {
   margin-right: 15px;
 }
-.testimonials-v1 .carousel-info span {
+.testimonials .carousel-info span {
   display: block;
 }
-.testimonials-v1 span.testimonials-name {
+.testimonials span.testimonials-name {
   color: #E6400C;
   font-size: 16px;
   font-weight: 300;
   margin: 23px 0 7px;
 }
-.testimonials-v1 span.testimonials-post {
+.testimonials span.testimonials-post {
   color: #656565;
   font-size: 12px;
 }
-.testimonials-v1 .left-btn,
-.testimonials-v1 .right-btn {
+.testimonials .left-btn,
+.testimonials .right-btn {
   right: 0;
   width: 26px;
   height: 26px;
@@ -20341,51 +20332,50 @@ Notes
   position: absolute;
   display: inline-block;
 }
-.testimonials-v1 .left-btn {
+.testimonials .left-btn {
   right: 30px;
   background: url(../img/fa-angles.png) no-repeat 8px 8px;
 }
-.testimonials-v1 .right-btn {
-  background: url(../img/fa-angles.png) no-repeat -33px 8px;
-}
-.testimonials-v1 .left-btn:hover {
+.testimonials .left-btn:hover {
   background: #e84d1c url(../img/fa-angles.png) no-repeat 8px -31px;
 }
-.testimonials-v1 .right-btn:hover {
+.testimonials .right-btn {
+  background: url(../img/fa-angles.png) no-repeat -33px 8px;
+}
+.testimonials .right-btn:hover {
   background: #e84d1c url(../img/fa-angles.png) no-repeat -33px -31px;
 }
-/* our clients */
-.our-clients {
+.partners {
   position: relative;
 }
-.our-clients h2 {
+.partners h2 {
   margin: 3px 0 5px;
 }
-.our-clients h2 a {
+.partners h2 a {
   color: #3e4d5c;
 }
-.our-clients h2 a:hover {
+.partners h2 a:hover {
   color: #E02222;
 }
-.our-clients .client-item {
+.partners .partner {
   background: #f8f8f8;
   margin-left: 2px;
   position: relative;
 }
-.our-clients .client-item img {
+.partners .partner img {
   margin-left: auto;
   margin-right: auto;
 }
-.our-clients .client-item .color-img {
+.partners .partner .color-img {
   display: none;
 }
-.our-clients .client-item:hover img {
+.partners .partner:hover img {
   display: none;
 }
-.our-clients .client-item:hover .color-img {
+.partners .partner:hover .color-img {
   display: block;
 }
-.our-clients .owl-buttons {
+.partners .owl-buttons {
   left: -74px;
   right: auto;
   top: 0;
@@ -21017,13 +21007,13 @@ a:hover {
 .quote-v1 a.btn-transparent:hover {
   background: #44b1c1;
 }
-.recent-work h2 a:hover {
+.recent-infographics h2 a:hover {
   color: #44b1c1;
 }
-.recent-work .recent-work-item .fa:hover {
+.recent-infographics .recent-infographic-item .fa:hover {
   color: #44b1c1;
 }
-.our-clients h2 a:hover {
+.partners h2 a:hover {
   color: #44b1c1;
 }
 .front-team h3 strong {
@@ -21070,13 +21060,13 @@ a:hover {
 .content-search h1 em {
   color: #44b1c1;
 }
-.recent-work .recent-work-item:hover a.recent-work-description {
+.recent-infographics .recent-infographic-item:hover a.recent-infographic-description {
   background: #44b1c1;
 }
-.testimonials-v1 blockquote:after {
+.testimonials blockquote:after {
   background-color: #44b1c1;
 }
-.testimonials-v1 span.testimonials-name {
+.testimonials span.testimonials-name {
   color: #44b1c1;
 }
 .search-result-item h4 a {
@@ -21126,10 +21116,10 @@ a:hover {
 .pre-footer-light address a {
   color: #44b1c1;
 }
-.testimonials-v1 .left-btn:hover {
+.testimonials .left-btn:hover {
   background-color: #44b1c1;
 }
-.testimonials-v1 .right-btn:hover {
+.testimonials .right-btn:hover {
   background-color: #44b1c1;
 }
 .blog-tags li i,
