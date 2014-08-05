@@ -2,6 +2,13 @@
 
 require 'api.php';
 
+$cases = CourtCase::all();
+
+var_dump(array_splice($cases, -2));
+
+exit();
+
+
 //new DateTime("2010-07-05T06:00:00Z", new DateTimeZone("Europe/Amsterdam"));
 
 $agencies = array(
