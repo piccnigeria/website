@@ -1,7 +1,17 @@
 # TODO: 
 # bower install GMaps, or include it in main page 
 # 'GMaps', GMaps
-define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','cs!frontend/models','cs!frontend/collections','cs!frontend/util','cs!frontend/ready'], ($, _, Backbone, templates, models, collections, util, ready) ->
+define [
+  'cs!frontend/plugins'
+  'underscore'
+  'backbone'
+  'cs!frontend/templates'
+  'cs!frontend/models'
+  'cs!frontend/collections'
+  'cs!frontend/util'
+  'cs!frontend/ready'
+  'GMaps'
+  ], ($, _, Backbone, templates, models, collections, util, ready, GMaps) ->
   
   _.extend Backbone.View::,
     serialize: (form) ->
@@ -241,8 +251,7 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
       @model.on "invalid error", @alert, @      
     alert: ->
       alert @model.validationError or @model.xhrError
-    onAttached: ->
-      ###
+    onAttached: ->      
       map = new GMaps
         div: "#map"
         lat: 6.504098
@@ -254,7 +263,6 @@ define ['cs!frontend/plugins','underscore','backbone','cs!frontend/templates','c
         infoWindow:
           content: "<b>PICC Nigeria</b><br>Co-Creation Hub<br>294 Herbert Macaulay Way, Yaba<br>Lagos, Nigeria"
       marker.infoWindow.open map, marker
-      ###
     events: 
       "submit form": "submit"
     submit: (ev) ->

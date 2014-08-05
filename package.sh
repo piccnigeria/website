@@ -68,9 +68,7 @@ echo "App updated successfully!"
 echo "Adding changes to git..."
 git add .
 echo "Committing changes to git..."
-git commit -m "Updated with relevant content & class names etc"
-
-exit
+git commit -m "Re-enabled Gmaps for Contact Us page"
 
 echo "Pushing changes to Github - git@github.com:piccnigeria/website.git"
 git push origin master
