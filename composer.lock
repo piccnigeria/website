@@ -258,12 +258,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ultractiv/lean.git",
-                "reference": "7b1ac811f08ec24434f72acd536ec93987d7f620"
+                "reference": "04a9c78f3e92f5ad3855a73d69856852d83870a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ultractiv/lean/zipball/7b1ac811f08ec24434f72acd536ec93987d7f620",
-                "reference": "7b1ac811f08ec24434f72acd536ec93987d7f620",
+                "url": "https://api.github.com/repos/ultractiv/lean/zipball/04a9c78f3e92f5ad3855a73d69856852d83870a8",
+                "reference": "04a9c78f3e92f5ad3855a73d69856852d83870a8",
                 "shasum": ""
             },
             "require": {
@@ -299,7 +299,7 @@
                 "mvc",
                 "rest"
             ],
-            "time": "2014-07-09 16:35:16"
+            "time": "2014-08-05 13:28:49"
         }
     ],
     "packages-dev": [
