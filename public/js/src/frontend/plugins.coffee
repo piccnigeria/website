@@ -5,7 +5,7 @@ define [
   #'uniform'
   #'mixitup'
   #'owl'
-  '$.rs'
-  '$.revolution'
+  #'$.rs'
+  #'$.revolution'
   ], 
   ($) -> $

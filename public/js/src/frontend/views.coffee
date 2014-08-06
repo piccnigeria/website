@@ -2,7 +2,7 @@
 # bower install GMaps, or include it in main page 
 # 'GMaps', GMaps
 define [
-  'cs!frontend/plugins'
+  'jquery'
   'underscore'
   'backbone'
   'cs!frontend/templates'
