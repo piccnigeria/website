@@ -1,5 +1,5 @@
 define [
-  'handlebars'
+  'Handlebars'
   'text!tmpl/index.html'
   'text!tmpl/slider.html'
   'text!tmpl/infographics.html'

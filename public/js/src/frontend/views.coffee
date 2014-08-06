@@ -9,8 +9,8 @@ define [
   'cs!frontend/models'
   'cs!frontend/collections'
   'cs!frontend/util'
-  'cs!frontend/ready'
-  'GMaps'
+  'cs!frontend/ready'  
+  'GMaps'  
   ], ($, _, Backbone, templates, models, collections, util, ready, GMaps) ->
   
   _.extend Backbone.View::,
