@@ -4,7 +4,7 @@ require.config({
 
     // Core libs
     backbone:'libs/backbone/backbone',
-    Handlebars: "//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min",    
+    handlebars: "//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min",
     jquery: "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min", //'libs/jquery/dist/jquery',
     underscore:"//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min", //'libs/underscore/underscore',
     moment:'libs/moment/moment',    
@@ -51,13 +51,13 @@ require.config({
     backbone:{
       deps:['underscore','jquery'],
       exports:'Backbone'
-    },    
+    },/*    
     Handlebars:{
       exports:'Handlebars'
     },    
     underscore:{
       exports:'_'
-    },
+    },*/
     // Testing
     jasmine: {
       exports: 'jasmine'
