@@ -1,24 +1,16 @@
 ({  
+  stubModules: ['text', 'bar', 'cs'],
   mainConfigFile:'configuration.js',
   name:'frontend/index',
+  exclude:['coffee-script'],
   preserveLicenseComments: false,
   generateSourceMaps: true,
-  out:'../script.min.js',
-  // include:'libs/requirejs/require.js',
+  out:'../script.min.js',  
   optimize:'uglify2',
-  paths:{
-  	/*  	
-  	cs:'empty:',
-  	text:'empty:',
-  	Handlebars:'empty:',
-  	*/
+  paths:{  	
   	jquery:'empty:',
-  	underscore:'empty:'
-  	/*bootstrap:'empty:',
-  	GMaps:'empty:',
-  	owl:'empty:',
-  	uniform:'empty:',
-  	fancybox:'empty:',
-  	mixitup:'empty:'*/
+  	underscore:'empty:',
+    handlebars:'empty:',
+    GMaps:'empty:'
   }
 })

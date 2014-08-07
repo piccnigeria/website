@@ -5,10 +5,12 @@ www_root=/var/www/picc/
 normal="optimize=none preserveLicenseComments=true generateSourceMaps=false"
 
 /usr/local/bin/r.js -o public/js/build/script.js
+# /usr/local/bin/r.js -o public/js/build/script.js ${normal} out=public/js/script.js
+
 cp public/js/* ${www_root}public/js
-cp index.html public/index.html
-cp index.html ${www_root}index.html
-cp index.html ${www_root}public/index.html
+cp index.html public
+cp index.html ${www_root}
+cp index.html ${www_root}public
 
 exit
 

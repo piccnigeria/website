@@ -1,6 +1,3 @@
-# TODO: 
-# bower install GMaps, or include it in main page 
-# 'GMaps', GMaps
 define [
   'jquery'
   'underscore'
@@ -10,7 +7,7 @@ define [
   'cs!frontend/collections'
   'cs!frontend/util'
   'cs!frontend/ready'  
-  'GMaps'  
+  'GMaps'
   ], ($, _, Backbone, templates, models, collections, util, ready, GMaps) ->
   
   _.extend Backbone.View::,
