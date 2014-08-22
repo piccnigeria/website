@@ -28,5 +28,6 @@ define ['backbone','cs!frontend/models'], (Backbone,models) ->
   Collections.BlogPosts = Collections.Base.extend
     model: models.BlogPost
     url: "posts" # path to the WP restful backend
+    parse: (response) -> response.posts
 
   Collections
