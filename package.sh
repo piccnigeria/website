@@ -4,9 +4,6 @@ clear
 www_root=/var/www/picc/
 normal="optimize=none preserveLicenseComments=true generateSourceMaps=false"
 
-/usr/local/bin/r.js -o public/js/build/script.js
-# /usr/local/bin/r.js -o public/js/build/script.js ${normal} out=public/js/script.js
-
 echo "Running packaging frontend clientside assets"
 echo "|-->  lessc --no-color -x --clean-css public/css/src/frontend/style.less public/css/style.css"
 /usr/local/bin/lessc public/css/src/frontend/style.less public/css/style.css
@@ -54,7 +51,7 @@ echo "App updated successfully!"
 echo "Adding changes to git..."
 git add .
 echo "Committing changes to git..."
-git commit -m "Updated Infographics"
+git commit -m "Removed Testimonials from the homepage; pulling Bootstrap & FontsAwesome from CDN"
 echo "Pushing changes to Github - git@github.com:piccnigeria/website.git"
 git push origin master
 echo "Pushing changes to Heroku - git@heroku.com:piccnigeria.git"
