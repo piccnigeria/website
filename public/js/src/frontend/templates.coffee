@@ -31,6 +31,9 @@ define [
     blogPostTmpl
   ) ->
 
+    Handlebars.registerHelper 'summarize', (post_body) ->
+      new Handlebars.SafeString post_body.substring 0, 200
+
     index: Handlebars.compile indexTmpl
     slider: Handlebars.compile sliderTmpl
     infographics: Handlebars.compile infographicsTmpl

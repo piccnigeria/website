@@ -2,6 +2,7 @@
 composer.phar
 vendor
 uploads
+localpackage.sh
 *.mwb.*
 docs/*.csv
 docs/*.xls
