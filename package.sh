@@ -51,7 +51,7 @@ echo "App updated successfully!"
 echo "Adding changes to git..."
 git add .
 echo "Committing changes to git..."
-git commit -m "Removed Testimonials from the homepage; pulling Bootstrap & FontsAwesome from CDN"
+git commit -m "Added unstyled search box to the homepage"
 echo "Pushing changes to Github - git@github.com:piccnigeria/website.git"
 git push origin master
 echo "Pushing changes to Heroku - git@heroku.com:piccnigeria.git"
