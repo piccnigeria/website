@@ -47,15 +47,6 @@ define [
     template: templates.slider
     className: "page-slider margin-bottom-40"
     init: -> $("#main").before @$el
-    onAttached: ->
-      @$(".fullwidthbanner").revolution
-        delay: 2000
-        startheight: 417
-        startwidth: 1150
-        hideThumbs: 10        
-        thumbAmount: 5        
-        shadow: 1
-        fullWidth: "on"
 
   Views.SubViews.FooterSubscriptionBox = Backbone.View.extend
     el: '.pre-footer-subscribe-box'
@@ -128,9 +119,9 @@ define [
   Views.Index = Views.Page.extend
     title: "Home"
     template: templates.index
-    init: ->
-      @slider = new Views.SubViews.Slider
-    onRendered: -> @slider.trigger "attached"
+    #init: ->
+    #  @slider = new Views.SubViews.Slider
+    #onRendered: -> @slider.trigger "attached"
     onAttached: ->
       # initializes the partners' logos scroller
       @$(".owl-carousel6-brands").owlCarousel
@@ -177,7 +168,7 @@ define [
             type: "inside"
 
     remove: ->
-      @slider.remove()
+      # @slider.remove()
       @$el.remove()
 
   Views.Static = Views.Page.extend

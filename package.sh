@@ -54,7 +54,7 @@ echo "App updated successfully!"
 echo "Adding changes to git..."
 git add .
 echo "Committing changes to git..."
-git commit -m "Updated About Us page; added terms and conditions"
+git commit -m "Dropped revolution slider"
 echo "Pushing changes to Github - git@github.com:piccnigeria/website.git"
 git push origin master
 echo "Pushing changes to Heroku - git@heroku.com:piccnigeria.git"
