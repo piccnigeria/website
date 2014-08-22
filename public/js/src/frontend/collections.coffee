@@ -1,4 +1,4 @@
-define ['underscore','jquery','backbone','cs!frontend/models'], (_,$,Backbone,models) ->
+define ['backbone','cs!frontend/models'], (Backbone,models) ->
   
   Collections =
     Base: Backbone.Collection.extend
