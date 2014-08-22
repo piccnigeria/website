@@ -1,31 +1,5 @@
 define [], ->
 
-  ###
-  _.extend Backbone.View::,
-    serialize: (form) ->
-      data = $(form).serializeArray()
-      keys = _.pluck data, "name"
-      values = _.pluck data, "value"
-      _.object keys, values
-    
-  BaseView: Backbone.View.extend
-    initialize: (options) ->        
-      @on("attached", @onAttached, @) if @onAttached?
-      @on("detached", @onDetached, @) if @onDetached?
-      @on("rendered", @onRendered, @) if @onRendered?
-      @beforeInit?()
-      @init?(options)
-      @collection.on("reset add remove", @render, @) if @isCollectionView?
-      @model.on("change", @render, @) if @isModelView?
-      @render()
-    data: ->
-      @collection?.toJSON() or @model?.toJSON() or {}
-    render: ->
-      @$el.html @template @data()
-      @trigger "rendered"
-      @
-  ###
-
   root = (if /^10|localhost/.test(location.hostname) then "/picc/" else "/")
 
   errors:
@@ -59,12 +33,5 @@ define [], ->
         js.id = id
         js.src = p + '://' + scriptUrl
         fjs.parentNode.insertBefore js, fjs
-      return
-    )(document, "script", scriptId)
-
-  removeScript: (scriptId) ->
-    ((d, s, id) ->
-      if d.getElementById(id)
-        d.removeElementById(id)          
       return
     )(document, "script", scriptId)

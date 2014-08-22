@@ -1,17 +1,15 @@
-define ['jquery','underscore','backbone', 'cs!frontend/views', 'cs!frontend/util'], ($, _, Backbone, MainView, util) ->
+define ['jquery','backbone','cs!frontend/views', 'cs!frontend/util'], ($, Backbone, MainView, util) ->
   (->        
     Router = Backbone.Router.extend(
       routes:
         "": "index"
-        about: "about"
-        "about/:page": "about"
+        "about(/:page)": "about"
         faqs: "faqs"
         cases: "cases"
         "case-maps":"case_maps"
         contact: "contact"
         infographics: "infographics"
-        blog: "blog"
-        "blog/:post":"blog_post"
+        "blog(/:post)":"blog"
 
       initialize: ->
         $ =>
@@ -30,7 +28,7 @@ define ['jquery','underscore','backbone', 'cs!frontend/views', 'cs!frontend/util
         @appView.renderIndex()
 
       about: (page) ->
-        @appView.renderStatic page or "about"
+        @appView.renderStatic page
 
       faqs: ->
         @appView.renderStatic "faqs"
@@ -46,12 +44,9 @@ define ['jquery','underscore','backbone', 'cs!frontend/views', 'cs!frontend/util
 
       infographics: ->
         @appView.renderInfographics()
-
-      blog: ->
-        @appView.renderBlog()
-
-      blog_post: (post) ->
-        @appView.renderBlogPost(post: post)
+        
+      blog: (post) ->
+        @appView.renderBlog(post)
 
     )
     instance = null

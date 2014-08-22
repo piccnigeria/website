@@ -9,6 +9,8 @@ define [
   'cs!frontend/ready'  
   'GMaps'
   ], ($, _, Backbone, templates, models, collections, util, ready, GMaps) ->
+
+  scrollToTop = -> $("body,html").animate scrollTop: 0, 800
   
   _.extend Backbone.View::,
     serialize: (form) ->
@@ -27,6 +29,7 @@ define [
         @on("rendered", @onRendered, @) if @onRendered?
         @beforeInit?()
         @init?(options)
+        @afterInit?()
         @collection.on("reset add remove", @render, @) if @isCollectionView?
         @model.on("change", @render, @) if @isModelView?
         @render()
@@ -39,7 +42,7 @@ define [
 
   Views.Page = Views.Base.extend
     className: "container"
-    beforeInit: ->
+    afterInit: ->
       if @title? 
         window.title = util.settings.siteTitle + " - " + @title
   
@@ -52,16 +55,16 @@ define [
     el: '.pre-footer-subscribe-box'
     initialize: ->
       @model = new models.Subscriber
-      # @model.on "error"
-      # @model.on "invalid"
-      # @model.on "sync"
-    
+      @model.on "error invalid", @alert, @
     events:
       "submit form":"submit"
-    
     submit: (ev) ->
       ev.preventDefault()
-      @model.create @serialize ev.currentTarget
+      @model.create @serialize(ev.currentTarget), =>
+        alert "You are now subscribed to our newsletter"
+        @model.clear()
+        ev.currentTarget.reset()
+    alert: -> alert @model.xhrError or @model.validationError
 
   Views.SubViews.MenuSearch = Backbone.View.extend
     el: "li.menu-search"
@@ -114,14 +117,14 @@ define [
         helpers:
           title:
             type: "inside"
-      @$(".mix-grid").mixItUp()
+      #@$(".mix-grid").mixItUp()
 
   Views.Index = Views.Page.extend
     title: "Home"
     template: templates.index
-    #init: ->
-    #  @slider = new Views.SubViews.Slider
-    #onRendered: -> @slider.trigger "attached"
+    init: ->
+      @slider = new Views.SubViews.Slider
+    onRendered: -> @slider.trigger "attached"
     onAttached: ->
       # initializes the partners' logos scroller
       @$(".owl-carousel6-brands").owlCarousel
@@ -158,7 +161,7 @@ define [
           [1600,3]
         ]
       
-      # @$(".fancybox-fast-view").fancybox()
+      @$(".fancybox-fast-view").fancybox()
       @$(".fancybox-button").fancybox
         groupAttr: "data-rel"
         prevEffect: "none"
@@ -168,7 +171,7 @@ define [
             type: "inside"
 
     remove: ->
-      # @slider.remove()
+      @slider.remove()
       @$el.remove()
 
   Views.Static = Views.Page.extend
@@ -273,6 +276,7 @@ define [
       @view = view
       @$el.html view.el
       @view.trigger "attached"
+      scrollToTop()
 
     renderIndex: ->
       @render new Views.Index
@@ -286,14 +290,14 @@ define [
     renderCase: (case_id) ->
       @render new Views.Case case_id: case_id
 
-    renderStatic: (page) ->
+    renderStatic: (page="about") ->
       @render new Views.Static page: page
 
-    renderBlog: ->
-      @render new Views.Blog
-
-    renderBlogPost: (post) ->
-      @render new Views.BlogPost
+    renderBlog: (post) ->
+      if post?
+        @render new Views.BlogPost
+      else 
+        @render new Views.Blog
 
     renderInfographics: ->
       @render new Views.Infographics

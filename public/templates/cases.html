@@ -2,18 +2,13 @@
     <li><a href="#" data-nav>Home</a></li>
     <li class="active">Cases</li>
 </ul>
-<!-- BEGIN SIDEBAR & CONTENT -->
 <div class="row margin-bottom-40">
-  <!-- BEGIN CONTENT -->
   <div class="col-md-12 col-sm-12">
     <h1>Cases</h1>
     <div class="content-page">
       <div class="row margin-bottom-30">
-        
-        <!-- BEGIN INFO BLOCK -->
         <div class="col-md-9 col-sm-9">
-          
-          <form action="#" class="content-search-view2">
+          <form name="" class="content-search-view2">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search...">
               <span class="input-group-btn">
@@ -21,23 +16,18 @@
               </span>
             </div>
           </form>
-
-          <!-- BEGIN LISTS -->
           {{#each this}}
           <div class="search-result-item">
-            <h4><a href="#">{{{title}}}</a></h4>
-            <p>Metronic is a responsive admin dashboard template powered with Twitter Bootstrap Framework for admin and backend applications. Metronic has a clean and intuitive metro style design which makes your next project look awesome and yet user friendly..</p>
+            <h4><a href="#case">{{{title}}}</a></h4>
+            <p>{{{description}}}</p>
             <ul class="blog-info">
               <li><i class="fa fa-gavel"></i> {{charge_number}}</li>
               <li><i class="fa fa-calendar"></i> {{charge_date}}</li>
               <li><i class="fa fa-map-marker"></i> {{court_state}}</li>
-              <li><i class="fa fa-tags"></i> tags</li>
+              <li><i class="fa fa-tags"></i> {{tags}}</li>
             </ul>
-            <a class="search-link" href="#">http://www.keenthemes.com</a>
           </div>
-          {{/each}}                  
-          <!-- END LISTS -->
-
+          {{/each}}
           <div class="row">
             <div class="col-md-4 col-sm-4 items-info">Cases 1 to 9 of 10 total</div>
             <div class="col-md-8 col-sm-8">
@@ -52,22 +42,8 @@
               </ul>
             </div>
           </div>
-
         </div>
-
-        <!-- END INFO BLOCK -->
-
         <div class="col-md-3 col-sm-3 blog-sidebar">
-
-          <h2 class="no-top-space">Categories</h2>
-          <ul class="nav sidebar-categories margin-bottom-40">
-            <li><a href="#">London (18)</a></li>
-            <li><a href="#">Moscow (5)</a></li>
-            <li class="active"><a href="#">Paris (12)</a></li>
-            <li><a href="#">Berlin (7)</a></li>
-            <li><a href="#">Istanbul (3)</a></li>
-          </ul>
-
           <div class="blog-tags margin-bottom-20">
             <h2>Tags</h2>
             <ul>
@@ -79,13 +55,8 @@
               <li><a href="#"><i class="fa fa-tags"></i>Misappropriation</a></li>              
             </ul>
           </div>
-          
         </div>
-        
       </div>
-
     </div>
   </div>
-  <!-- END CONTENT -->
 </div>
-<!-- END SIDEBAR & CONTENT -->
