@@ -416,7 +416,10 @@ class Controller extends \Lean\Controller {
     $model->destroy();
   }
   */
-
+  public function getPosts(){
+  	$posts = file_get_contents('http://piccblog.herokuapp.com/api/get_posts/');
+    return $this->responseData = $posts;
+  }
 
   
 
