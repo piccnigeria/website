@@ -4,6 +4,12 @@ clear
 www_root=/var/www/picc/
 normal="optimize=none preserveLicenseComments=true generateSourceMaps=false"
 
+cp index.html public/index.html
+cp index.html ${www_root}index.html
+cp index.html ${www_root}public/index.html
+
+exit
+
 echo "Running packaging frontend clientside assets"
 echo "|-->  lessc --no-color -x --clean-css public/css/src/frontend/style.less public/css/style.css"
 /usr/local/bin/lessc public/css/src/frontend/style.less public/css/style.css
