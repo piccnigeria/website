@@ -2526,3 +2526,32 @@ Custom icon buttons
 .fancybox-overlay {
   z-index: 99999;
 }
+
+.fullwidthbanner {
+  background: #f9f9f9;
+  padding-top:50px;
+  padding-bottom: 40px;
+  &:hover {
+    background: #f0f0f0;
+  }
+}
+
+.cases:empty, .posts:empty {
+  background: #f9f9f9;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+  &:before {
+    content: "Loading cases...";
+    color:#333;
+    font-size: 14px;
+    font-style: oblique;
+    margin: auto;
+  }
+}
+
+.posts:empty {
+  &:before {
+    content: "Loading blog posts...";
+  }
+}

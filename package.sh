@@ -4,15 +4,9 @@ clear
 www_root=/var/www/picc/
 normal="optimize=none preserveLicenseComments=true generateSourceMaps=false"
 
-cp index.html public/index.html
-cp index.html ${www_root}index.html
-cp index.html ${www_root}public/index.html
-
-exit
-
 echo "Running packaging frontend clientside assets"
 echo "|-->  lessc --no-color -x --clean-css public/css/src/frontend/style.less public/css/style.css"
-/usr/local/bin/lessc public/css/src/frontend/style.less public/css/style.css
+#/usr/local/bin/lessc public/css/src/frontend/style.less public/css/style.css
 /usr/local/bin/lessc --no-color --clean-css public/css/src/frontend/style.less public/css/style.min.css
 
 #echo "Running packaging admin clientside assets"
@@ -22,7 +16,7 @@ echo "|-->  lessc --no-color -x --clean-css public/css/src/frontend/style.less p
 
 echo "Packing frontend javascripts"
 echo "|-->  r.js -o public/js/build/script.js"
-/usr/local/bin/r.js -o public/js/build/script.js ${normal} out=public/js/script.js
+#/usr/local/bin/r.js -o public/js/build/script.js ${normal} out=public/js/script.js
 /usr/local/bin/r.js -o public/js/build/script.js
 
 #echo "Packing admin javascripts"
@@ -53,6 +47,8 @@ cp index.html ${www_root}public/index.html
 cp -r public/img/* ${www_root}public/img
 
 echo "App updated successfully!"
+
+exit
 
 echo "Adding changes to git..."
 git add .

@@ -3,51 +3,43 @@
     <li class="active">Blog</li>
 </ul>
 
-<!-- BEGIN SIDEBAR & CONTENT -->
 <div class="row margin-bottom-40">
-  <!-- BEGIN CONTENT -->
   <div class="col-md-12 col-sm-12">
     <h1>PICC Blog</h1>
     <div class="content-page">
       <div class="row">
-        <!-- BEGIN LEFT SIDEBAR -->            
-        <div class="col-md-9 col-sm-9 blog-posts">
+        <div class="col-md-9 col-sm-9">
+          <div class="posts">{{#each this}}
+            <div class="row">
+              <div class="col-md-4 col-sm-4">
+                <img class="img-responsive" alt="" src="{{post_image_thumbnail}}">
+              </div>
+              <div class="col-md-8 col-sm-8">
+                <h2><a href="#blog/post/{{slug}}" data-nav>{{{title}}}</a></h2>
+                <ul class="blog-info">
+                  <li><i class="fa fa-calendar"></i> {{date}}</li>
+                  <li><i class="fa fa-tags"></i> {{tags}}</li>
+                </ul>
+                <p>{{{excerpt}}}</p>
+                <a href="#blog/post/{{slug}}" data-nav class="more">Read more <i class="icon-angle-right"></i></a>
+              </div>
+            </div>
+            <hr class="blog-post-sep">
+          {{/each}}</div>
           
-          {{#each this}}
-
-          <div class="row">
-            <div class="col-md-4 col-sm-4">
-              <img class="img-responsive" alt="" src="{{post_image_thumbnail}}">
-            </div>
-            <div class="col-md-8 col-sm-8">
-              <h2><a href="#blog/post/{{slug}}" data-nav>{{{title}}}</a></h2>
-              <ul class="blog-info">
-                <li><i class="fa fa-calendar"></i> {{date}}</li>
-                <li><i class="fa fa-comments"></i> </li>
-                <li><i class="fa fa-tags"></i> {{tags}}</li>
-              </ul>
-              <p>{{{excerpt}}}</p>
-              <a href="#blog/post/{{slug}}" data-nav class="more">Read more <i class="icon-angle-right"></i></a>
-            </div>
-          </div>
-          <hr class="blog-post-sep">
-
-          {{/each}}
-                            
+          {{#if this}}
           <ul class="pagination">
             <li><a href="#">Prev</a></li>
-            <li><a href="#">1</a></li>
+            <li><a class="active">1</a></li>
             <li><a href="#">2</a></li>
-            <li class="active"><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
             <li><a href="#">Next</a></li>
-          </ul>               
+          </ul>
+          {{/if}}
         </div>
-        <!-- END LEFT SIDEBAR -->
 
-        <!-- BEGIN RIGHT SIDEBAR -->            
+
         <div class="col-md-3 col-sm-3 blog-sidebar">
+          {{#if recent_posts}}
           <h2>Recent News</h2>
           <div class="recent-news margin-bottom-10">
             {{#each recent_posts}}
@@ -62,9 +54,10 @@
             </div>
             {{/each}}
           </div>
+          {{/if}}
 
           <div class="blog-tags margin-bottom-20">
-            <h2>Tags</h2>
+            <h2>Posts Tags</h2>
             <ul>
               <li><a href="#"><i class="fa fa-tags"></i>EFCC</a></li>
               <li><a href="#"><i class="fa fa-tags"></i>ICPC</a></li>
@@ -73,7 +66,6 @@
               <li><a href="#"><i class="fa fa-tags"></i>Court</a></li>
               <li><a href="#"><i class="fa fa-tags"></i>Trials</a></li>
               <li><a href="#"><i class="fa fa-tags"></i>Judges</a></li>
-              <li><a href="#"><i class="fa fa-tags"></i>High Profile Cases</a></li>
             </ul>
           </div>
         </div>
@@ -81,6 +73,4 @@
       </div>
     </div>
   </div>
-  <!-- END CONTENT -->
 </div>
-<!-- END SIDEBAR & CONTENT -->

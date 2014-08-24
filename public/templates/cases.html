@@ -16,7 +16,7 @@
               </span>
             </div>
           </form>
-          {{#each this}}
+          <div class="cases">{{#each this}}
           <div class="search-result-item">
             <h4><a href="#case">{{{title}}}</a></h4>
             <p>{{{description}}}</p>
@@ -27,14 +27,15 @@
               <li><i class="fa fa-tags"></i> {{tags}}</li>
             </ul>
           </div>
-          {{/each}}
+          {{/each}}</div>
+          {{#if pagination}}
           <div class="row">
             <div class="col-md-4 col-sm-4 items-info">Cases 1 to 9 of 10 total</div>
             <div class="col-md-8 col-sm-8">
               <ul class="pagination pull-right">
                 <li><a href="#">«</a></li>
-                <li><a href="#">1</a></li>
-                <li><span>2</span></li>
+                <li><span>1</span></li>
+                <li><a href="#">2</a></li>
                 <li><a href="#">3</a></li>
                 <li><a href="#">4</a></li>
                 <li><a href="#">5</a></li>
@@ -42,6 +43,7 @@
               </ul>
             </div>
           </div>
+          {{/if}}
         </div>
         <div class="col-md-3 col-sm-3 blog-sidebar">
           <div class="blog-tags margin-bottom-20">
@@ -52,7 +54,7 @@
               <li><a href="#"><i class="fa fa-tags"></i>Stealing</a></li>
               <li><a href="#"><i class="fa fa-tags"></i>Counterfeiting</a></li>
               <li><a href="#"><i class="fa fa-tags"></i>Impersonation</a></li>
-              <li><a href="#"><i class="fa fa-tags"></i>Misappropriation</a></li>              
+              <li><a href="#"><i class="fa fa-tags"></i>Misappropriation</a></li>
             </ul>
           </div>
         </div>
