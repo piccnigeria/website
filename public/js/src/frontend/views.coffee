@@ -10,6 +10,8 @@ define [
   'GMaps'
   ], ($, _, Backbone, templates, models, collections, util, ready, GMaps) ->
 
+  router = null
+
   scrollToTop = -> $("body,html").animate scrollTop: 0, 800
   
   _.extend Backbone.View::,
@@ -193,46 +195,52 @@ define [
     init: ->
       @collection = new collections.Cases
     onAttached: ->
-      ###
       map = new GMaps
         div: "#map"
         lat: -13.004333
-        lng: -38.494333      
-      marker = map.addMarker
+        lng: -38.494333
+      map.addMarker
         lat: -13.004333
         lng: -38.494333
         title: "A sample case title"
         infoWindow:
           content: "<b>A sample case title</b> At Federal High Court, Lagos"
-      marker.infoWindow.open map, marker
-      ###      
       
   Views.Case = Views.Page.extend
     template: templates.case_
     isModelView: true
     init: ->
-      # @title = @model.get ''
+      @title = @model.get 'title'
 
   Views.Cases = Views.Page.extend
-    title: 'Cases'
+    title: 'Corruption Cases'
     template: templates.cases
     isCollectionView: true
     init: ->
       @collection = new collections.Cases
-
+    events: 
+      "click .cases a[data-nav]":"show_case"
+    show_case: (ev) ->
+      model = @collection.get ev.currentTarget.id
+      router.appView.render new Views.Case model: model
 
   Views.BlogPost = Views.Page.extend
     template: templates.blog_post
     isModelView: true
     init: ->
-      # @title = @model.get ''
+      @title = @model.get 'title'
 
-  Views.Blog = Views.Page.extend
+  Views.BlogIndex = Views.Page.extend
     title: 'PICC Blog'
     template: templates.blog
     isCollectionView: true
     init: ->
       @collection = new collections.BlogPosts
+    events:
+      "click .posts a[data-nav]":"show_blog_post"
+    show_blog_post: (ev) ->
+      model = @collection.get ev.currentTarget.id
+      router.appView.render new Views.BlogPost model: model
 
   Views.Contact = Views.Page.extend
     title: "Contact Us"
@@ -264,7 +272,8 @@ define [
 
   Backbone.View.extend
     el: "#main"
-    initialize: ->
+    initialize: (options) ->
+      router = options.router
       ready.initResponsive()
       ready.initScrollToTop()
       new Views.SubViews.MenuSearch
@@ -278,29 +287,20 @@ define [
       @view.trigger "attached"
       scrollToTop()
 
-    renderIndex: ->
-      @render new Views.Index
+    renderIndex: -> @render new Views.Index
 
-    renderCaseMaps: ->
-      @render new Views.CaseMaps
+    renderCaseMaps: -> @render new Views.CaseMaps
     
-    renderCases: ->
-      @render new Views.Cases
+    renderCases: (case_id) ->
+      unless case_id? then @render new Views.Cases
+      else @render new Views.Case case_id: case_id
 
-    renderCase: (case_id) ->
-      @render new Views.Case case_id: case_id
-
-    renderStatic: (page="about") ->
-      @render new Views.Static page: page
+    renderStatic: (page="about") -> @render new Views.Static page: page
 
     renderBlog: (post) ->
-      if post?
-        @render new Views.BlogPost
-      else 
-        @render new Views.Blog
+      if post? then @render new Views.BlogPost
+      else @render new Views.BlogIndex
 
-    renderInfographics: ->
-      @render new Views.Infographics
+    renderInfographics: -> @render new Views.Infographics
 
-    renderContact: ->
-      @render new Views.Contact
+    renderContact: -> @render new Views.Contact

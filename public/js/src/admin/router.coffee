@@ -1,9 +1,10 @@
-define ['jquery','underscore','backbone', 'cs!admin/views', 'cs!frontend/util'], ($, _, Backbone, MainView, util) ->
-  (->        
-    Router = Backbone.Router.extend(
+define ['jquery','backbone','cs!admin/views','cs!frontend/util'], ($, Backbone, MainView, util) ->
+  (->
+    
+    Router = Backbone.Router.extend
       routes:
-        "": "login"
-        home: "home"        
+        "": "index"
+        home: "home"
 
       initialize: ->
         $ =>
@@ -18,15 +19,15 @@ define ['jquery','underscore','backbone', 'cs!admin/views', 'cs!frontend/util'],
             ev.preventDefault()
             @navigate href.split("#")[1], true
 
-      login: ->
+      index: ->
         @appView.renderIndex()
 
       home: ->
         @appView.renderDashboard()
 
-    )
     instance = null
     getInstance: ->
       instance = new Router  unless instance?
       instance
+
   )()

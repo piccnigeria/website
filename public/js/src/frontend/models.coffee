@@ -4,7 +4,6 @@ define ['backbone','cs!frontend/util'], (Backbone, util) ->
     Base: Backbone.Model.extend
       saveToLocalStorage: false
       saveToSessionStorage: false
-      idAttribute: "_id"
       initialize: (attrs, options) ->
         @on "error", @__error, @
         @on "invalid", @__invalid, @

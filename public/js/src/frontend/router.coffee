@@ -6,10 +6,12 @@ define ['jquery','backbone','cs!frontend/views', 'cs!frontend/util'], ($, Backbo
         "about(/:page)": "about"
         faqs: "faqs"
         cases: "cases"
+        # "cases(/id/:id)": "cases"
         "case-maps":"case_maps"
         contact: "contact"
         infographics: "infographics"
-        "blog(/:post)":"blog"
+        blog: "blog"
+        # "blog(/post/:slug)":"blog"
 
       initialize: ->
         $ =>
@@ -33,8 +35,8 @@ define ['jquery','backbone','cs!frontend/views', 'cs!frontend/util'], ($, Backbo
       faqs: ->
         @appView.renderStatic "faqs"
 
-      cases: ->
-        @appView.renderCases()
+      cases: (id) ->
+        @appView.renderCases(id)
 
       case_maps: ->
         @appView.renderCaseMaps()
@@ -45,8 +47,8 @@ define ['jquery','backbone','cs!frontend/views', 'cs!frontend/util'], ($, Backbo
       infographics: ->
         @appView.renderInfographics()
         
-      blog: (post) ->
-        @appView.renderBlog(post)
+      blog: (slug) ->
+        @appView.renderBlog(slug)
 
     )
     instance = null

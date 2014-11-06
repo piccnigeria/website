@@ -1,4 +1,4 @@
-define ['cs!admin/plugins','underscore','backbone','cs!admin/templates','cs!frontend/models','cs!frontend/collections','cs!frontend/util'], ($, _, Backbone, templates, models, collections, util) ->
+define ['jquery','underscore','backbone','cs!admin/templates','cs!frontend/models','cs!frontend/collections','cs!frontend/util'], ($, _, Backbone, templates, models, collections, util) ->
   
   _.extend Backbone.View::,
     serialize: (form) ->
@@ -17,6 +17,7 @@ define ['cs!admin/plugins','underscore','backbone','cs!admin/templates','cs!fron
         @on("rendered", @onRendered, @) if @onRendered?
         @beforeInit?()
         @init?(options)
+        @afterInit?()
         @collection.on("reset add remove", @render, @) if @isCollectionView?
         @model.on("change", @render, @) if @isModelView?
         @render()
@@ -34,21 +35,55 @@ define ['cs!admin/plugins','underscore','backbone','cs!admin/templates','cs!fron
         window.title = util.settings.siteTitle + " - " + @title
     
   Views.Index = Views.Page.extend
-    title: "Home"
+    title: "PICC | Admin Dashboard"
     template: templates.index
     init: ->
-        
-  Views.Case = Views.Page.extend
-    template: templates.case_    
 
-  Views.Cases = Views.Page.extend
-    title: 'Cases'
-    template: templates.cases
+  Views.Auth = Views.Page.extend
+    title: "PICC | Admin Login"
+    template: templates.auth
     init: ->
-      @collection = new collections.Cases
+    events:
+      'click #register-btn':'showRegistrationForm'
+      'click #forget-btn':'showForgetForm'
+      'click #register-back-btn,#back-btn':'showLoginForm'
+      'keypress form input':'onEnterSubmit'
+      'submit form[name="login-form"]':'login'
+      'submit form[name="register-form"]':'register'
+      'submit form[name="forget-form"]':'forget'
+    
+    showRegistrationForm: ->
+      @$('.login-form').hide()
+      @$('.register-form').show()
+
+    showForgetForm: ->
+      @$('.login-form').hide()
+      @$('.forget-form').show()
+
+    showLoginForm: ->
+      @$('.register-form,.forget-form').hide()
+      @$('.login-form').show()
+
+    onEnterSubmit: (ev) ->
+      if ev.which is 13
+        if @$('form:visible').validate().form()
+          @$('form:visible').submit() #form validation success, call ajax form submit
+        return false
+
+    login: (ev) ->
+      ev.preventDefault()
+      console.log @serialize ev.currentTarget
+
+    register: (ev) ->
+      ev.preventDefault()
+      console.log @serialize ev.currentTarget
+
+    forget: (ev) ->
+      ev.preventDefault()
+      console.log @serialize ev.currentTarget
     
   Backbone.View.extend
-    el: "body"
+    el: "body > div"
     initialize: ->
     render: (view)->
       @view?.remove()
@@ -57,19 +92,7 @@ define ['cs!admin/plugins','underscore','backbone','cs!admin/templates','cs!fron
       @view.trigger "attached"
 
     renderIndex: ->
-      @render new Views.Index
+      @render new Views.Auth
 
     renderDashboard: ->
       @render new Views.Index
-        
-    renderCases: ->
-      @render new Views.Cases
-
-    renderCase: (case_id) ->
-      @render new Views.Case case_id: case_id
-
-    renderStatic: (page) ->
-      @render new Views.Static page: page
-    
-    renderInfographics: ->
-      @render new Views.Infographics    

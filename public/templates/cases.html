@@ -18,7 +18,7 @@
           </form>
           <div class="cases">{{#each this}}
           <div class="search-result-item">
-            <h4><a href="#case">{{{title}}}</a></h4>
+            <h4><a href="#cases/id/{{id}}" id="{{id}}" data-nav>{{{title}}}</a></h4>
             <p>{{{description}}}</p>
             <ul class="blog-info">
               <li><i class="fa fa-gavel"></i> {{charge_number}}</li>
@@ -36,9 +36,6 @@
                 <li><a href="#">«</a></li>
                 <li><span>1</span></li>
                 <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
                 <li><a href="#">»</a></li>
               </ul>
             </div>
@@ -47,7 +44,7 @@
         </div>
         <div class="col-md-3 col-sm-3 blog-sidebar">
           <div class="blog-tags margin-bottom-20">
-            <h2>Tags</h2>
+            <h4>Tags</h4>
             <ul>
               <li><a href="#"><i class="fa fa-tags"></i>Money laundering</a></li>
               <li><a href="#"><i class="fa fa-tags"></i>Forgery</a></li>
